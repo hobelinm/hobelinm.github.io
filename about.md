@@ -9,7 +9,7 @@ Seattle Area Developer, Geek, and Movies fan.
 
 ### More Information
 
-Welcome to my public blog. :smile:
+Welcome to my public blog.
 
 ### Contact me
 
