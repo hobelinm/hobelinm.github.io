@@ -20,7 +20,7 @@ avatar: https://bit.ly/hugobelinpic
 footer-links:
   dribbble:
   email: info@hugobelin.com
-  facebook:
+  facebook: hobelinm
   flickr:
   github: hobelinm
   instagram:
@@ -28,7 +28,7 @@ footer-links:
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: hugobelinm
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  stackoverflow: users/747572/hobelinm
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
