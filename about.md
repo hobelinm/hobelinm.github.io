@@ -2,14 +2,15 @@
 layout: page
 title: About
 permalink: /about/
+published: true
 ---
 
-Some information about you!
+Seattle Area Developer, Geek, and Movies fan.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Welcome to my public blog.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[email@hugobelin.com](mailto:email@hugobelin.com)
