@@ -40,36 +40,39 @@
             <p class="site-description">{{ site.description }}</p>
           </div>
 
-          <nav class="container-fluid">
-            <div class="dropdown">
-              <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Blog
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Blog</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Movies</a></li>
-                <li><a href="#">Cars</a></li>
-                <li><a href="#">Videogames</a></li>
-                <li><a href="#">Fitness</a></li>
-              </ul>
-            </div>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-            <div class="dropdown">
-              <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Language
-                <span class="caret"></span>
-              </a>
-              <!-- TODO: Populate this via Angular -->
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">English</a></li>
-                <li><a href="#">Spanish</a></li>
-              </ul>
-            </div>
-          </nav>
+          <ul class="nav nav-tabs container-fluid">
+            <li role="navigation">
+              <div class="dropdown">
+                <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Blog
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Blog</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Projects</a></li>
+                  <li><a href="#">Movies</a></li>
+                  <li><a href="#">Cars</a></li>
+                  <li><a href="#">Videogames</a></li>
+                  <li><a href="#">Fitness</a></li>
+                </ul>
+              </div>
+            </li>
+            <li role="navigation"><a href="{{ site.baseurl }}/about">About</a></li>
+            <li role="navigation">
+              <div class="dropdown">
+                <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Language
+                  <span class="caret"></span>
+                </a>
+                <!-- TODO: Populate this via Angular -->
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">English</a></li>
+                  <li><a href="#">Spanish</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </header>
       </div>
     </div>
