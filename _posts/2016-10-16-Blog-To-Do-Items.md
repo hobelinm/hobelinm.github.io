@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Blog To Do Items
+title: To Do Items
 ---
-## Blog To Do Items
+
 This blog post will be used to track the upcoming features for the blog. 
 There are several things I plan to add (long and short term). 
 It is separated in _content_ (the things I plan to blog about) and _code_ items (the code changes I plan to make to this blog).
