@@ -17,3 +17,12 @@ Welcome to my public blog.
 
 <a href="https://twitter.com/hugobelinm" class="twitter-follow-button" data-show-count="false">Follow @hugobelinm</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+### Blog Version
+
+| Definition   | Number  |
+| ------------ | ------- |
+| Version      | 0.1.1.0 |
+| Major        |       0 |
+| Minor        |       1 |
+| Client Build |       1 |
+| Server Build |       0 |
