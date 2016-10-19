@@ -5,7 +5,7 @@ permalink: /about/
 published: true
 ---
 
-Seattle Area Developer, Geek, and Movies fan.
+Seattle Area Developer, Geek, and Movies fan. The ideas in this site are my own and do not reflect those of my employer.
 
 ### More Information
 
@@ -19,10 +19,4 @@ Welcome to my public blog.
 
 ### Blog Version
 
-| Definition   | Number  |
-| ------------ | ------- |
-| Version      | 0.1.1.0 |
-| Major        |       0 |
-| Minor        |       1 |
-| Client Build |       1 |
-| Server Build |       0 |
+- Version `0.1.2.0`
