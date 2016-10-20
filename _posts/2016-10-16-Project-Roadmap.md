@@ -6,4 +6,4 @@ published: true
 
 In this post I'm outlining the plans for developing all supporting tools to develop this site
 
-![Project Roadmap](https://trello.com/b/IP34qsd1 "Project Roadmap")
+<img src="https://docs.google.com/drawings/d/13EFEtYoGPu3r-kaUVdYjVwqLB4T3UXert0SRMgRW9aY/pub?w=960&amp;h=720">
