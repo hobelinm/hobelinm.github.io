@@ -4,19 +4,21 @@ published: true
 ---
 
 <div class="posts">
-  {% for post in site.posts | where:"post.category","projects" %}
-    <article class="post">
+  {% for post in site.posts %}
+  	{% if post.category == "projects" %}
+      <article class="post">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-      <div>
-        <p>Category: {{ post.category }}</p>
-      </div>
+        <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+        <div>
+          <p>Category: {{ post.category }}</p>
+        </div>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+        <div class="entry">
+          {{ post.excerpt }}
+        </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      </article>
+  	{% endif %}
   {% endfor %}
 </div>
