@@ -2,6 +2,7 @@
 layout: post
 title: Project Roadmap
 published: true
+category: projects
 ---
 
 In this post I'm outlining the plans for developing all supporting tools to develop this site
