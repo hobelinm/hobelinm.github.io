@@ -4,10 +4,13 @@ published: true
 ---
 
 <div class="posts">
-  {% for (post in site.posts) | where:"page.category","projects" %}
+  {% for post in site.posts | where:"post.category","projects" %}
     <article class="post">
 
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      <div>
+        <p>Category: {{ post.category }}</p>
+      </div>
 
       <div class="entry">
         {{ post.excerpt }}
