@@ -1,6 +1,8 @@
 ---
 layout: post
 title: To Do Items
+published: true
+category: projects
 ---
 
 This blog post will be used to track the upcoming features for the blog. 
