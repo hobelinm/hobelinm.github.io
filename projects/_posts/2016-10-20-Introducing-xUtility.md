@@ -3,7 +3,6 @@ layout: post
 title: Introducing xUtility
 category: projects
 published: true
-permalink: '/:path/:basename'
 ---
 
 Part of my strategy outlined at my [Project Roadmap](https://hobelinm.github.io/Project-Roadmap/) is to create several utilities. 
