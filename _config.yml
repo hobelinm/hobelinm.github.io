@@ -26,7 +26,8 @@ footer-links:
   instagram:
   linkedin: hugobelin
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: RSS
+  #rss: # just type anything here for a working RSS icon
   twitter: hugobelinm
   stackoverflow: users/747572/hobelinm
   youtube: # channel/<your_long_string> or user/<user-name>
@@ -72,7 +73,8 @@ kramdown:
 
 # Set the Sass partials directory, as we're using @imports
 sass:
-  style: :expanded # You might prefer to minify using :compressed
+  style: :compressed # You might prefer to minify using :compressed
+  #style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
 gems:
