@@ -10,11 +10,16 @@
     <![endif]-->
     
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
     <!-- End of jQuery -->
 
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous" />
+    <script type='text/javascript' src="https://use.fontawesome.com/a9d7543418.js" ></script>
+    <!-- End of Font Awesome -->
 
     <!-- Twitter Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -45,7 +50,8 @@
         </div>
       </div>
     </div> <!-- .container-fluid -->
-
+    
+    {% include footer.html %}
     {% include analytics.html %}
   </body>
 </html>
