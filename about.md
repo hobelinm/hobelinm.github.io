@@ -7,7 +7,7 @@ published: true
 
 <div class="jumbotron">
   <h1>Hugo Belin</h1>
-  <p>Seattle Area Developer, Geek, and Movies fan. The ideas in this site are my own and do not reflect those of my employer.</p>
+  <p><i class="material-icons" style="font-size: 96px; float: left;">person_pin</i> Seattle Area Developer, Geek, and Movies fan. <br>The ideas in this site are my own and do not reflect those of my employer.</p>
 </div>
 
 ### Contact me
