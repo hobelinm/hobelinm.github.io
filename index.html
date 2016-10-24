@@ -5,6 +5,8 @@ layout: default
 <div class="jumbotron">
   <h1>Welcome to my Homepage</h1>
   <p>While the site is under construction. Some of the content is being added to my site already, use the navbar to access it or use de buttons below.</p>
-  <p><a class="btn btn-primary btn-lg" href="{{ site.baseurl }}/about/" role="button">About</a></p>
-  <p><a class="btn btn-primary btn-lg" href="{{ site.baseurl }}/blog/" role="button">Blog</a></p>
+  <div class="btn-group" role="group" aria-label="selection-buttons">
+    <button type="button" class="btn btn-primary btn-lg"><a href="{{ site.baseurl }}/about/">About</a></button>
+    <button type="button" class="btn btn-primary btn-lg"><a href="{{ site.baseurl }}/blog/">Blog</a></button>
+  </div>
 </div>

@@ -3,6 +3,16 @@ layout: default
 published: true
 ---
 
+<div class="jumbotron">
+  <h1>Welcome to my Blog</h1>
+  <p>From Projects to Fitness, from Cars to Videogames. You will find related topics that are interesting to me. There are different categories, to filter by category use the dropdown on the navbar or use the buttons below.</p>
+  <div class="btn-group" role="group" aria-label="selection-buttons">
+    <button type="button" class="btn btn-primary btn-lg"><a href="{{ site.baseurl }}/projects/">Projects</a></button>
+    <button type="button" class="btn btn-primary btn-lg"><a href="{{ site.baseurl }}/movies/">Movies</a></button>
+    <button type="button" class="btn btn-primary btn-lg"><a href="{{ site.baseurl }}/videogames/">Videogames</a></button>
+  </div>
+</div>
+
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
