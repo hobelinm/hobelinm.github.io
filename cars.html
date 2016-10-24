@@ -4,14 +4,14 @@ published: true
 ---
 
 <div class="jumbotron">
-  <h1>Welcome to Projects section</h1>
-  <p>Electronics, software development (including this site!), and more.</p>
+  <h1>Welcome to Cars section</h1>
+  <p>Fastest, efficient, best design in this all-about-cars section.</p>
   <!-- Use the same construct to display buttons for tags -->
 </div>
 
 <div class="posts">
   {% for post in site.posts %}
-  	{% if post.category == "projects" %}
+  	{% if post.category == "cars" %}
       <article class="post">
 
         <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>

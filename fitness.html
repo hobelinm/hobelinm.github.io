@@ -4,14 +4,14 @@ published: true
 ---
 
 <div class="jumbotron">
-  <h1>Welcome to Projects section</h1>
-  <p>Electronics, software development (including this site!), and more.</p>
+  <h1>Welcome to Fitness section</h1>
+  <p>Lean and mean section for my stories on fitness.</p>
   <!-- Use the same construct to display buttons for tags -->
 </div>
 
 <div class="posts">
   {% for post in site.posts %}
-  	{% if post.category == "projects" %}
+  	{% if post.category == "fitness" %}
       <article class="post">
 
         <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>

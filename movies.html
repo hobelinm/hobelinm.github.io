@@ -3,6 +3,12 @@ layout: default
 published: true
 ---
 
+<div class="jumbotron">
+  <h1>Welcome to Movies section</h1>
+  <p>In the beginning, there was a scene, then it made it into a shoot, then it made it into a movie. And from there to this section :)</p>
+  <!-- Use the same construct to display buttons for tags -->
+</div>
+
 <div class="posts">
   {% for post in site.posts %}
   	{% if post.category == "movies" %}
