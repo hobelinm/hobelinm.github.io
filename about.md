@@ -12,9 +12,11 @@ published: true
 
 ### Contact me
 
-<div class="btn-group" role="group" aria-label="selection-buttons">
-  <button type="button" class="btn btn-primary btn-lg" onclick="mailto:email@hugobelin.com;">email@hugobelin.com</button>
-  <a href="https://twitter.com/hugobelinm" class="twitter-follow-button" data-show-count="false">Follow @hugobelinm</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="wrapper-footer">
+  <div class="container">
+    <footer class="footer">
+      {% include svg-icons.html %}
+      <a href="https://twitter.com/hugobelinm" class="twitter-follow-button" data-show-count="false">Follow @hugobelinm</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </footer>
+  </div>
 </div>
-
-[email@hugobelin.com](mailto:email@hugobelin.com)
