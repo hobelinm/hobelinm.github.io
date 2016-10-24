@@ -11,4 +11,4 @@ In this section I plan to devote all my thoughts about Cars. Design, efficiency,
 
 Stay tuned
 
-<a href="{{ site.baseurl }}/{{ post.category }}">Back to {{ post.category }}</a>
+<a href="{{ site.baseurl }}/{{ category }}">Back to {{ category }}</a>
