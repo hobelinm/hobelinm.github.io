@@ -22,3 +22,5 @@ It is separated in _content_ (the things I plan to blog about) and _code_ items 
 - [ ] Add Backend functionality by adding service calls
 
 This blog will be updated to reflect additional changes
+
+<a href="{{ site.baseurl }}/{{ page.category }}">Back to {{ page.category }}</a>

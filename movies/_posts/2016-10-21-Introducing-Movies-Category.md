@@ -12,3 +12,5 @@ This is important because we get critic reviews all the time and in popular apps
 By creating a profile critics I am trying to standardize the critics profiles so that people refer to the critic that mostly resemble their likes and dislikes.
 
 Stay tuned
+
+<a href="{{ site.baseurl }}/{{ page.category }}">Back to {{ page.category }}</a>

@@ -10,3 +10,5 @@ Welcome to my new section, Fitness!
 Here I plan to share my road to being fit, challenges, practices. Hopefully you'll se numbers too
 
 Stay tuned
+
+<a href="{{ site.baseurl }}/{{ page.category }}">Back to {{ page.category }}</a>

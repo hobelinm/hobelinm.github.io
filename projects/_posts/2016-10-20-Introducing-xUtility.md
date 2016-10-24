@@ -29,3 +29,5 @@ Developers can create custom retry policies which dictate the behavior (number o
 Additional content will be added as needed so don't forget to come back every now and then. Hopefully this module will be helpful.
 
 Happy Scripting!
+
+<a href="{{ site.baseurl }}/{{ page.category }}">Back to {{ page.category }}</a>
