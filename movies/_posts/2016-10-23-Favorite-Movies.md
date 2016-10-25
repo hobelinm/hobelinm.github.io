@@ -8,6 +8,7 @@ published: true
 Movies, movies, movies!
 
 This is a list of my favorite movies:
+
 - StarWars Series (Favorite of them: Episode 3)
 - Back to the Future
 - Alien Series (Favorite of them: Aliens)
