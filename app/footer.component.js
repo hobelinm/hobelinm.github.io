@@ -9,10 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var asset_manager_service_1 = require('./asset-manager.service');
 var AppFooter = (function () {
-    function AppFooter(assetMan) {
-        this.assetMan = assetMan;
+    function AppFooter() {
         this.copyrightLabel = 'Loading';
         this.pageviewsLabel = 'Loading';
         this.visitorsLabel = 'Loading';
@@ -24,21 +22,13 @@ var AppFooter = (function () {
         this.initializeLabels();
     };
     AppFooter.prototype.initializeLabels = function () {
-        var _this = this;
-        this.assetMan.getAssetString('CopyrightLabel').then(function (copyright) { return _this.copyrightLabel = copyright; });
-        this.assetMan.getAssetString('PageviewsLabel').then(function (pageviews) { return _this.pageviewsLabel = pageviews; });
-        this.assetMan.getAssetString('VisitorsLabel').then(function (visitors) { return _this.visitorsLabel = visitors; });
-        this.assetMan.getAssetString('MyViewsLabel').then(function (myViews) { return _this.myviewsLabel = myViews; });
-        this.assetMan.getAssetString('VersionLabel').then(function (version) { return _this.versionLabel = version; });
-        this.assetMan.getAssetString('VersionNumber').then(function (version) { return _this.version = version; });
     };
     AppFooter = __decorate([
         core_1.Component({
             selector: 'app-footer',
             templateUrl: 'html/footer.html',
-            providers: [asset_manager_service_1.AssetMan]
         }), 
-        __metadata('design:paramtypes', [asset_manager_service_1.AssetMan])
+        __metadata('design:paramtypes', [])
     ], AppFooter);
     return AppFooter;
 }());
