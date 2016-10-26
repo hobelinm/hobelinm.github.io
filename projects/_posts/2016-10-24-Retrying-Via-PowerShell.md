@@ -33,8 +33,8 @@ The resulting policy object contains and algorithm which depicts the execution l
 There's a set of predefined policies that simulate common retry behaviors:
 
 - Constant. Waits for a constant amount of time between retries
-- Linear. Waits a linear time between retries (n + n)
-- Exponential. Waits an exponential amount of time between retries (n * n)
+- Linear. Waits a linear time between retries (n + initial(n))
+- Exponential. Waits an exponential amount of time between retries (n + n)
 - Random. Waits for a random amount of time between retries (0 ~ n)
 
 If these behaviors do not fit your needs you can still go through the work of defining your own retry logic. 
@@ -77,8 +77,67 @@ The newly created policy object will look something similar:
 
 ![Retry Policy Object]({{ site.baseurl }}/images/RetryPolicyObject.PNG "Linear Retry Policy Object")
 
-We don't need to worry on the details, so we'll simply use it when attempting to accessing the resources
+We don't need to worry on the details, so we'll simply use it when attempting to access the resources. 
+To access the resources we'll simple give this command to `Invoke-ScriptBlockWithRetry`:
 
-To Be Continued...
+```powershell
+PS> dir Z:\
+```
+
+Before feeding this command into the cmdlet is important to mention a couple of things:
+
+- `Invoke-ScriptBlockWithRetry` works by catching terminating errors, therefore whatever `[ScriptBlock]` we pass in must throw a terminating error as a result of a failure we want to act on. 
+This is important because in PowerShell there's the concept of [non-terminating errors](https://blogs.technet.microsoft.com/heyscriptingguy/2015/09/16/understanding-non-terminating-errors-in-powershell/) where a command or script can raise errors that are not considered 'terminating errors' and the execution would still continue (making it impossible for `Invoke-ScriptBlockWithRetry` to catch those).
+- Luckily PowerShell provides a way of defining how to behave with non-terminating errors. 
+This is done by means of the default variable `$ErrorActionPreference`. 
+Typically this variable is set to 'Continue' which means that PowerShell will try to continue with execution of the remaining commands regardless of the non-terminating errors. 
+To make `Invoke-ScriptBlockWithRetry` work there are two options:
+  - Override the global value of `$ErrorActionPreference`
+  - Use built-in support for overriding `$ErrorActionPreference` behavior for specific cmdlets
+
+To override the default value use the following:
+
+```powershell
+PS> $ErrorActionPreference = 'Stop'
+```
+
+Note that this will apply only to the current session and you have to remember to apply this to new sessions. 
+Therefore is not the recommended option.
+
+A better approach is not to rely on the user state, and implement a robust support for this behavior. 
+If you know the command that will produce the specific error try specifying a custom error action. 
+If you are the creator of the cmdlets used inside the `[ScriptBlock]` (you can simply wrap the commands inside in your own function). 
+Simply include the support for `[CmdletBinding()]` in your definition to get access to the PowerShell [Common Parameters](https://technet.microsoft.com/en-us/library/hh847884.aspx). 
+Then you can override this behavior to stop as `<my_cmdlet> -ErrorAction Stop` to get the desired results. 
+
+In our case `dir` is and alias of the cmdlet `Get-ChildItem` which we know supports `-ErrorAction` so we can fix our issue by simply adding it:
+
+```powershell
+PS> dir Z:\ -ErrorAction Stop
+```
+
+Now we have everything we need support this. So lets grab our newly generated policy object `$policy` and wrap the `dir` command in a `ScriptBlock`. 
+For the sake of this post I will also include a `-Verbose` option to display the time increase once the command throws an error:
+
+```powershell
+PS> Invoke-ScriptBlockWithRetry -Context { dir Z:\ -ErrorAction Stop} -RetryPolicy $policy -Verbose
+```
+
+That command yields to the following output:
+
+![Invoke-ScriptBlockWithRetry]({{ site.baseurl }}/images/Invoke-ScriptBlockWithRetry-Execution01.PNG "Invoke-ScriptBlockWithRetry sample")
+
+In this case I did not make the resource available to test the use and to show that `Invoke-ScriptBlockWithRetry` respects the given policy in number of retries, the time between retries, and the change between retries. 
+Finally once unable to execute the given `ScriptBlock` properly, the cmdlet returns the last error raised by it.
+
+The wait between retries is also helpful as it does not blast requests, while the change in time allows to define a behavior when retrying.
+
+Hopefully this will solve some of your issues with stale resources. 
+I plan to use this as the foundation future cmdlets. 
+If you have any issue open an issue in [GitHub](https://github.com/hobelinm/PsxUtility).
+
+Feel free to leave any comment.
+
+Happy scripting!
 
 <a href="{{ site.baseurl }}/{{ page.category }}">Back to {{ page.category }}</a>
