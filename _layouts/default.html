@@ -64,7 +64,11 @@
     </div> <!-- .container-fluid -->
     
     {% if site.angularenabled == true %}
-      <angular2-app>Loading...</angular2-app>
+      <angular2-app>
+        {% raw %}
+        <p>[{{title}}] Angular 2 Is Loaded</p>
+        {% endraw %}
+      </angular2-app>
     {% endif %}
     {% include footer.html %}
     {% include analytics.html %}
