@@ -35,6 +35,7 @@
     <!-- End of Twitter Bootstrap -->
 
     <!-- Angular JS 2 -->
+    {% if site.angular2enabled == true %}
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -47,6 +48,7 @@
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
+    {% endif %}
     
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
   </head>
@@ -61,11 +63,11 @@
       </div>
     </div> <!-- .container-fluid -->
     
-    <!--
+    {% if site.angular2enabled == true %}
     <app-navbar>Navbar...</app-navbar>
     <angular2-app>Loading...</angular2-app>
     <app-footer>Footer...</app-footer>
-    -->
+    {% endif %}
     {% include footer.html %}
     {% include analytics.html %}
   </body>
