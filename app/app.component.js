@@ -9,8 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var navbar_component_1 = require('./navbar.component');
-var footer_component_1 = require('./footer.component');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = "Hugo Belin";
@@ -19,7 +17,6 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'angular2-app',
             templateUrl: 'html/main.html',
-            providers: [navbar_component_1.AppNavbar, footer_component_1.AppFooter]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
