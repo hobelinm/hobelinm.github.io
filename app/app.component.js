@@ -11,11 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = "Hugo Belin";
+        this.title = "Angular 2";
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'angular2-app',
+            templateUrl: 'html/main.html',
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
