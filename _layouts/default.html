@@ -35,7 +35,7 @@
     <!-- End of Twitter Bootstrap -->
 
     <!-- Angular JS 2 -->
-    {% if site.angularenabled == true %}
+    {% if site.angularenabled == true and page.url == '/' %}
       <!-- 1. Load libraries -->
       <!-- Polyfill(s) for older browsers -->
       <script src="{{site.baseurl}}/node_modules/core-js/client/shim.min.js"></script>
@@ -63,14 +63,13 @@
       </div>
     </div> <!-- .container-fluid -->
     
-    {% if site.angularenabled == true %}
+    {% if site.angularenabled == true and page.url == '/' %}
       <angular2-app>
         {% raw %}
         <p>[{{title}}] Angular 2 Is Loaded</p>
         {% endraw %}
       </angular2-app>
     {% endif %}
-    <p>{{ page.url }}</p>
     {% include footer.html %}
     {% include analytics.html %}
   </body>
