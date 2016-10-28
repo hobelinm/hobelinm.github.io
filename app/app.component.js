@@ -14,6 +14,9 @@ var AppComponent = (function () {
         this.title = "Angular 2 App";
         this.baseUrl = "https://hobelinm.github.io";
     }
+    AppComponent.prototype.redirectSubPage = function (subPage) {
+        location.href = this.baseUrl + '/' + subPage;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'angular2-app',
