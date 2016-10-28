@@ -2,7 +2,16 @@
     "authors": "Microsoft TypeScript <http://typescriptlang.org>, DefinitelyTyped <https://github.com/DefinitelyTyped/DefinitelyTyped>",
     "definitionFilename": "index.d.ts",
     "libraryDependencies": [],
-    "moduleDependencies": [],
+    "moduleDependencies": [
+        "child_process",
+        "crypto",
+        "events",
+        "http",
+        "net",
+        "readline",
+        "stream",
+        "tls"
+    ],
     "libraryMajorVersion": "6",
     "libraryMinorVersion": "0",
     "libraryName": "Node.js v6.x",
@@ -10,7 +19,7 @@
     "projectName": "http://nodejs.org/",
     "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
     "sourceBranch": "types-2.0",
-    "kind": "MultipleModules",
+    "kind": "ModuleAugmentation",
     "globals": [
         "Buffer",
         "NodeJS",
@@ -68,5 +77,5 @@
         "index.d.ts"
     ],
     "hasPackageJson": false,
-    "contentHash": "fda14253379f4199d5502086dcf3ba9815fbe03810dbb1abbe31f39c6c66ada6"
+    "contentHash": "9b6462383a63f6151842aa7335a9443767e4b87c8dd3554a1d4258b4c8d14b44"
 }
