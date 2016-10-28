@@ -55,22 +55,23 @@
 
   <body>
     {% include facebook.html %}
-    {% include navbar.html %}
-
-    <div class="container-fluid">
-      <div id="main" role="main" class="container">
-        {{ content }}
-      </div>
-    </div> <!-- .container-fluid -->
-    
     {% if site.angularenabled == true and page.url == '/' %}
       <angular2-app>
         {% raw %}
         <p>[{{title}}] Angular 2 Is Loaded</p>
         {% endraw %}
       </angular2-app>
+
+    {% else %}
+      {% include navbar.html %}
+      <div class="container-fluid">
+        <div id="main" role="main" class="container">
+          {{ content }}
+        </div>
+      </div> <!-- .container-fluid -->
+      {% include footer.html %}
     {% endif %}
-    {% include footer.html %}
+    
     {% include analytics.html %}
   </body>
 </html>
