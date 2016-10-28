@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = "Angular 2 App";
+        this.baseUrl = "https://hobelinm.github.io";
     }
     AppComponent = __decorate([
         core_1.Component({
