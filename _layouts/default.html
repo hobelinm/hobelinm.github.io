@@ -56,7 +56,22 @@
   <body>
     {% include facebook.html %}
     {% if site.angularenabled == true and page.url == '/' %}
-      <angular2-app></angular2-app>
+      <angular2-app>
+        <div class="container-fluid">
+          <div id="main" role="main" class="container">
+            <div class="jumbotron">
+              <h1>Loading...</h1>
+              <p><i class="fa fa-circle-o-notch fa-spin" style="font-size: 96px; float: left;"></i>While the site is under construction. Some of the content is being added to my site already, use the navbar to access it or use de buttons below.</p>
+              <div class="btn-group" role="group" aria-label="selection-buttons">
+                <button type="button" class="btn btn-primary btn-lg" (click)="redirectSubPage('about/')">About</button>
+                <button type="button" class="btn btn-primary btn-lg" (click)="redirectSubPage('blog/')">Blog</button>
+                <button type="button" class="btn btn-primary btn-lg" (click)="redirectSubPage('credits/')">Credits</button>
+              </div>
+            </div>
+            <p>[{{title}}] Angular 2 Is Loaded</p>
+          </div>
+        </div> <!-- .container-fluid -->
+      </angular2-app>
 
     {% else %}
       {% include navbar.html %}
