@@ -10,10 +10,12 @@
         <span class="icon-bar"></span>
       </button>
       <div>
+        {% raw %}
         <a class="navbar-brand" (click)="redirectSubPage('')">
             <img width="30" height="30" alt="Hugo Belin" src="{{avatar}}" />
         </a>
         <h2 class="navbar-text"><a (click)="redirectSubPage('')">{{siteName}}</a></h2>
+        {% endraw %}
       </div>
     </div>
 
