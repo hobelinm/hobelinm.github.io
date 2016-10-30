@@ -11,7 +11,10 @@
       </button>
       <div>
         <a class="navbar-brand" (click)="redirectSubPage('')" >
-          <img width="30" height="30" alt="Hugo Belin" src="{{avatarUrl}}" />
+          <img width="{{avataImg.width}}" 
+            height="{{avataImg.height}}" 
+            alt="{{avataImg.alt}}" 
+            src="{{avataImg.src}}" />
         </a>
         <h2 class="navbar-text"><a (click)="redirectSubPage('')" >{{siteName}}</a></h2>
       </div>
