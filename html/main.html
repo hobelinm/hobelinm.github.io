@@ -3,11 +3,15 @@
   <div id="main" role="main" class="container">
     <div class="jumbotron">
       <h1>Welcome to my Homepage</h1>
-      <p><i class="material-icons" style="font-size: 96px; float: left;">public</i>While the site is under construction. Some of the content is being added to my site already, use the navbar to access it or use de buttons below.</p>
+      <p><i 
+        class="material-icons" 
+        style="font-size: 96px; float: left;">public</i>While the site is under construction. Some of the content is being added to my site already, use the navbar to access it or use de buttons below.
+      </p>
       <div class="btn-group" role="group" aria-label="selection-buttons">
-        <button type="button" class="btn btn-primary btn-lg" (click)="redirectSubPage('about/')">About</button>
-        <button type="button" class="btn btn-primary btn-lg" (click)="redirectSubPage('blog/')">Blog</button>
-        <button type="button" class="btn btn-primary btn-lg" (click)="redirectSubPage('credits/')">Credits</button>
+        <button *ngFor="let pageSection of pageSections" 
+          type="button"
+          class="btn btn-primary btn-lg"
+          (click)="pageControl.redirectSubPage(pageSection.page)">{{pageSection.label}}</button>
       </div>
     </div>
   </div>
