@@ -40,17 +40,15 @@
             data-toggle="dropdown" 
             role="button" 
             aria-haspopup="true" 
-            aria-expanded="false">{{blogLabel}}<span class="caret"></span></a>
+            aria-expanded="false">{{blogPage.label}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a (click)="redirectSubPage('blog/')" >{{blogLabel}}</a></li>
+            <li><a (click)="redirectSubPage(blogPage.page)" >{{blogPage.label}}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a (click)="redirectSubPage('projects/')" >{{projectsLabel}}</a></li>
-            <li><a (click)="redirectSubPage('movies/')" >{{moviesLabel}}</a></li>
-            <li><a (click)="redirectSubPage('cars/')" >{{carsLabel}}</a></li>
-            <li><a (click)="redirectSubPage('videogames/')" >{{videogamesLabel}}</a></li>
-            <li><a (click)="redirectSubPage('fitness/')" >{{fitnessLabel}}</a></li>
+            <li *ngFor="let pageSection of pageSections">
+              <a (click)="redirectSubPage(pageSection.page)">{{pageSection.label}}</a>
+            </li>
             <li role="separator" class="divider"></li>
-            <li><a (click)="redirectSubPage('credits/')" >{{creditsLabel}}</a></li>
+            <li><a (click)="redirectSubPage(creditsPage.page)" >{{creditsPage.label}}</a></li>
           </ul>
         </li>
       </ul>
