@@ -12,7 +12,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- TODO: Click on the icon should take to Credits page -->
-            <a class="navbar-brand" (click)="redirectSubPage('credits/')">
+            <a class="navbar-brand" (click)="pageControl.redirectSubPage('credits/')">
                 <i class="fa fa-fort-awesome fa-lg"></i>
             </a>
         </div>
@@ -22,8 +22,13 @@
                 <li><p class="navbar-text">{{copyrightLabel}} <i class="fa fa-copyright fa-inverse"></i> {{yearLabel}}</p></li>
                 <!-- TODO: Update measurements via angular -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">{{pageviewsLabel}}: <i class="fa fa-chrome fa-inverse fa-spin"></i><span class="caret"></span></a>
+                    <a href="#" 
+                        class="dropdown-toggle" 
+                        data-toggle="dropdown" 
+                        role="button" 
+                        aria-haspopup="true"
+                        aria-expanded="false">{{pageviewsLabel}}: <i class="fa fa-chrome fa-inverse fa-spin"></i><span class="caret"></span>
+                    </a>
                     <!-- TODO: href for links should redirect to Credits that shows statistics -->
                     <ul class="dropdown-menu">
                         <li><a href="#">{{visitorsLabel}}: <i class="fa fa-chrome fa-spin"></i></a></li>
@@ -33,8 +38,13 @@
                 </li>
                 <li><p class="navbar-text">{{pageVersion}}</p></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">SectionTest<span class="caret"></span></a>
+                    <a href="#" 
+                        class="dropdown-toggle" 
+                        data-toggle="dropdown" 
+                        role="button" 
+                        aria-haspopup="true"
+                        aria-expanded="false">SectionTest<span class="caret"></span>
+                    </a>
                     <!-- TODO: Angular filled section menu -->
                     <ul class="dropdown-menu">
                         <li><a href="#">Topic1 Section1</a></li>
