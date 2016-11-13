@@ -52,7 +52,7 @@ url: https://hobelinm.github.io
 baseurl: ""
 
 ############### CUSTOM VARIABLES ###################
-pageversion: 86 # @@@PRECOMPILER:VERSION@@@
+pageversion: 87 # @@@PRECOMPILER:VERSION@@@
 angularenabled: true
 
 #
