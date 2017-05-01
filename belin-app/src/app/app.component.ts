@@ -7,5 +7,5 @@ import { MdToolbarModule } from '@angular/material';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Hugo Belin: Work in progress!';
+  title = 'Work in progress...';
 }

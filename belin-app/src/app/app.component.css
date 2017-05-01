@@ -4,10 +4,24 @@ h1 {
     font-size: 250%;
 }
 
-.footer {
+/* TODO: Move to Header Component CSS */
+.mdl-layout--fixed-header .mdl-layout__header .mdl-layout__header-row span img {
+    padding-right: 10px;
+}
+
+.mdl-layout--fixed-header .mdl-layout__drawer nav span {
+    align-self: center;
+}
+
+/* TODO: Move to Footer Component CSS */
+.mdl-mini-footer {
+    padding-top: 5px;
+    padding-bottom: 5px;
     position: fixed;
-    z-index: 100;
-    bottom: 0;
-    left: 0;
+    bottom: 0px;
     width: 100%;
+}
+
+.mdl-mini-footer__right-section {
+    padding-right: 20px;
 }
