@@ -1,0 +1,37 @@
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <i class="material-icons">blur_on</i>
+    </a>
+    <ul class="nav navbar-nav">
+      <li><p class="navbar-text">Copyright © {{year}}</p></li>
+      <li class="dropup">
+        <a href="#" 
+            class="dropdown-toggle" 
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false">
+            Page Views: <span class="versionCode">{{pageviews}}</span> <span class="caret"></span>
+          </a>
+        <ul class="dropdown-menu">
+          <li>
+            <p class="navbar-text">
+              <i class="material-icons">bubble_chart</i>
+              <i class="material-icons">insert_chart</i>
+              <i class="material-icons">pie_chart</i>
+              <i class="material-icons">show_chart</i>
+            </p>
+          </li>
+          <li><p class="navbar-text">Visitors: <span class="versionCode">{{visitors}}</span></p></li>
+          <li><p class="navbar-text">My Views: <span class="versionCode">{{myViews}}</span></p></li>
+          <li><p class="navbar-text">Site Views: <span class="versionCode">{{siteViews}}</span></p></li>
+        </ul>
+      </li>
+      <li><p class="navbar-text">Version: <span class="versionCode">{{siteVersion}}</span></p></li>
+    </ul><!-- /.nav /.navbar-nav -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><div class="navbar-text addthis_inline_follow_toolbox"></div></li>
+    </ul>
+  </div>
+</nav>

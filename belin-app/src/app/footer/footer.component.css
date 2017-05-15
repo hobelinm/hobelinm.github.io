@@ -1,0 +1,17 @@
+/*
+app-footer .mdl-mini-footer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+app-footer .mdl-mini-footer__right-section {
+    padding-right: 20px;
+}
+*/
+
+.versionCode {
+  font-family: 'Inconsolata', monospace;
+}

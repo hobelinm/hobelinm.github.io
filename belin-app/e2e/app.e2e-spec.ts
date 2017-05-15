@@ -7,8 +7,8 @@ describe('belin-app App', () => {
     page = new BelinAppPage();
   });
 
-  it('should display message saying "Hugo Belin: Work in progress!"', () => {
+  it('should display message saying "Work in progress..."', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Hugo Belin: Work in progress!');
+    expect(page.getParagraphText()).toEqual('Work in progress...');
   });
 });
