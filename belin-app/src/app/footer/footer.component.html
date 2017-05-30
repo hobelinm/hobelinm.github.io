@@ -15,23 +15,25 @@
             Page Views: <span class="versionCode">{{pageviews}}</span> <span class="caret"></span>
           </a>
         <ul class="dropdown-menu">
-          <li>
-            <p class="navbar-text">
-              <i class="material-icons">bubble_chart</i>
-              <i class="material-icons">insert_chart</i>
-              <i class="material-icons">pie_chart</i>
-              <i class="material-icons">show_chart</i>
-            </p>
-          </li>
-          <li><p class="navbar-text">Visitors: <span class="versionCode">{{visitors}}</span></p></li>
-          <li><p class="navbar-text">My Views: <span class="versionCode">{{myViews}}</span></p></li>
-          <li><p class="navbar-text">Site Views: <span class="versionCode">{{siteViews}}</span></p></li>
+          <li><p class="navbar-text"><i class="material-icons">bubble_chart</i> Visitors: <span class="versionCode">{{visitors}}</span></p></li>
+          <li><p class="navbar-text"><i class="material-icons">insert_chart</i> My Views: <span class="versionCode">{{myViews}}</span></p></li>
+          <li><p class="navbar-text"><i class="material-icons">show_chart</i> Site Views: <span class="versionCode">{{siteViews}}</span></p></li>
         </ul>
       </li>
       <li><p class="navbar-text">Version: <span class="versionCode">{{siteVersion}}</span></p></li>
     </ul><!-- /.nav /.navbar-nav -->
     <ul class="nav navbar-nav navbar-right">
-      <li><div class="navbar-text addthis_inline_follow_toolbox"></div></li>
+      <li>
+        <div class="navbar-text addthis_inline_follow_toolbox"></div>
+      </li>
+      <li>
+        <div class="navbar-text custom-buttons">
+          <a href="{{tableauProfile}}" target="_blank"><img src="{{tableauPublicUri}}" alt="{{tableauPublicAlt}}" height="20" width="20" /></a>
+          <a href="http://www.xbox.com/en-US/" target="_blank"><img src="{{xboxUri}}" alt="{{xboxAlt}}" height="20" width="20" /></a>
+          <a href="https://www.playstation.com/en-us/" target="_blank" class="background-color-white"><img src="{{psnUri}}" alt="{{psnAlt}}" height="20" width="20" /></a>
+          <a href="http://www.nintendo.com/" target="_blank"><img src="{{nUri}}" alt="{{nAlt}}" height="20" width="20" /></a>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>
