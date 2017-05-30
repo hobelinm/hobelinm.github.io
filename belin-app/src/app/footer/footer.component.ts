@@ -19,7 +19,7 @@ export class FooterComponent implements OnInit {
     this.visitors = 0;
     this.myViews = 0;
     this.siteViews = 0;
-    this.siteVersion = "0.1.0.0"
+    this.siteVersion = "0.1.1.0"
    }
 
   ngOnInit() {

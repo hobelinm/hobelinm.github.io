@@ -37,31 +37,37 @@ export class TopNavbarMenuItem {
             itemType: "link",
             itemClass: "",
             label: "Projects",
-            linkLocation: "#/Projects"
+            linkLocation: "#/projects"
           },
           {
             itemType: "link",
             itemClass: "",
             label: "Movies",
-            linkLocation: "#/Movies"
+            linkLocation: "#/movies"
           },
           {
             itemType: "link",
             itemClass: "",
             label: "Cars",
-            linkLocation: "#/Cars"
+            linkLocation: "#/cars"
           },
           {
             itemType: "link",
             itemClass: "",
             label: "Videogames",
-            linkLocation: "#/Videogames"
+            linkLocation: "#/videogames"
           },
           {
             itemType: "link",
             itemClass: "",
-            label: "Projects",
-            linkLocation: "#/Fitness"
+            label: "Fitness",
+            linkLocation: "#/fitness"
+          },
+          {
+            itemType: "link",
+            itemClass: "",
+            label: "Travel",
+            linkLocation: "#/travel"
           },
           {
             itemType: "separator",
@@ -73,7 +79,7 @@ export class TopNavbarMenuItem {
             itemType: "link",
             itemClass: "",
             label: "Credits",
-            linkLocation: "#/Credits"
+            linkLocation: "#/credits"
           }
         ]
       }
