@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TopNavbarMenuItem } from './menuItem.model.component';
+import { TopNavbarMenuItem } from './menuItem.model';
 import { SearchForm } from '../models/searchForm.model';
 
 @Component({
