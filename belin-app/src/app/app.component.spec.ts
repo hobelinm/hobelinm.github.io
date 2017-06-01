@@ -1,6 +1,4 @@
 import { TestBed, async } from '@angular/core/testing';
-import { MaterialModule } from "@angular/material";
-
 import 'hammerjs';
 
 import { AppComponent   } from './app.component';
@@ -12,7 +10,6 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-        MaterialModule.forRoot()
       ]
     }).compileComponents();
   }));
