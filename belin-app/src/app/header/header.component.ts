@@ -8,6 +8,7 @@ import { SearchForm } from '../models/searchForm.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public brandImgUri : string;
   public navbarItemsLeft : Array<TopNavbarMenuItem>;
   public navbarItemsRight : Array<TopNavbarMenuItem>;
   public navbarSearchForm : SearchForm;
@@ -20,6 +21,8 @@ export class HeaderComponent implements OnInit {
       placeHolder: "Search",
       submitButtonLabel: "Submit"
     };
+
+    this.brandImgUri = "https://www.gravatar.com/avatar/4e300423bea7dac04dda2f53babfddf0?s=25";
   }
 
   ngOnInit() {

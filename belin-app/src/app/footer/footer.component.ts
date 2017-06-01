@@ -22,7 +22,7 @@ export class FooterComponent implements OnInit {
     this.visitors = 0;
     this.myViews = 0;
     this.siteViews = 0;
-    this.siteVersion = "0.1.3.0";
+    this.siteVersion = "0.1.4.0";
    }
 
   ngOnInit() {
