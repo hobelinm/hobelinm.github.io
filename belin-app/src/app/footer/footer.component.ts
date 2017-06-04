@@ -17,15 +17,15 @@ export class FooterComponent implements OnInit {
   public customButtons : Array<CustomButton>;
 
   constructor() {
+   }
+
+  ngOnInit() {
     this.year = (new Date).getFullYear().toString();
     this.pageviews = 0;
     this.visitors = 0;
     this.myViews = 0;
     this.siteViews = 0;
-    this.siteVersion = "0.1.4.0";
-   }
-
-  ngOnInit() {
+    this.siteVersion = "0.1.5.0";
     this.customButtons = CustomButton.getCustomButtons();
   }
 

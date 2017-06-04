@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
   public navbarSearchForm : SearchForm;
 
   constructor() {
+  }
+
+  ngOnInit() {
     this.navbarItemsLeft = TopNavbarMenuItem.getMenuItemsLeft();
     this.navbarItemsRight = TopNavbarMenuItem.getMenuItemsRight();
     
@@ -23,9 +26,6 @@ export class HeaderComponent implements OnInit {
     };
 
     this.brandImgUri = "https://www.gravatar.com/avatar/4e300423bea7dac04dda2f53babfddf0?s=25";
-  }
-
-  ngOnInit() {
   }
 
 }

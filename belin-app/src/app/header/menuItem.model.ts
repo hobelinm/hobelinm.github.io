@@ -15,16 +15,16 @@ export class TopNavbarMenuItem {
     let menuItems : Array<TopNavbarMenuItem> = [
       {
         label: "Home", // TODO: Localize this
-        itemType: "link",
+        itemType: "ngLink",
         itemClass: "active", // TODO: This should change when browsing to another page
         linkLocation: "/",
         dropdownItems: []
       },
       {
         label: "About",
-        itemType: "link",
+        itemType: "ngLink",
         itemClass: "",
-        linkLocation: "#/About",
+        linkLocation: "/about",
         dropdownItems: []
       },
       {
@@ -34,40 +34,40 @@ export class TopNavbarMenuItem {
         linkLocation: "#",
         dropdownItems: [
           {
-            itemType: "link",
+            itemType: "ngLink",
             itemClass: "",
             label: "Projects",
-            linkLocation: "#/projects"
+            linkLocation: "section/projects"
           },
           {
-            itemType: "link",
+            itemType: "ngLink",
             itemClass: "",
             label: "Movies",
-            linkLocation: "#/movies"
+            linkLocation: "section/movies"
           },
           {
-            itemType: "link",
+            itemType: "ngLink",
             itemClass: "",
             label: "Cars",
-            linkLocation: "#/cars"
+            linkLocation: "section/cars"
           },
           {
-            itemType: "link",
+            itemType: "ngLink",
             itemClass: "",
             label: "Videogames",
-            linkLocation: "#/videogames"
+            linkLocation: "section/videogames"
           },
           {
-            itemType: "link",
+            itemType: "ngLink",
             itemClass: "",
             label: "Fitness",
-            linkLocation: "#/fitness"
+            linkLocation: "section/fitness"
           },
           {
-            itemType: "link",
+            itemType: "ngLink",
             itemClass: "",
             label: "Travel",
-            linkLocation: "#/travel"
+            linkLocation: "section/travel"
           },
           {
             itemType: "separator",
@@ -76,10 +76,16 @@ export class TopNavbarMenuItem {
             linkLocation: "#"
           },
           {
-            itemType: "link",
+            itemType: "ngLink",
             itemClass: "",
             label: "Credits",
-            linkLocation: "#/credits"
+            linkLocation: "/credits"
+          },
+          {
+            itemType: "ngLink",
+            itemClass: "",
+            label: "Change Log",
+            linkLocation: "/changelog"
           }
         ]
       }
