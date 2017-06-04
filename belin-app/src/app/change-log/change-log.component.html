@@ -1,13 +1,36 @@
-<h1>{{title}}</h1>
-<p>{{description}}</p>
+<div class="container">
+  <div class="jumbotron">
+    <h1>{{title}}</h1>
+    <p>{{description}}</p>
+    <pre>
+1.2.3.4
+| | | |____ {{revisionPolicy}}
+| | |______ {{buildPolicy}}
+| |________ {{minorPolicy}}
+|__________ {{majorPolicy}}
+</pre>
+  </div>
+</div>
 <div class="fluid-container">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <code>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="page-header">
+        <h2>{{clientChangeLog}}</h2>
+      </div>
+      <pre>
+0.1.6.0 - Minor improvements to change log page
 0.1.5.0 - Initial routing setup
-      </code>
+      </pre>
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <div class="page-header">
+        <h2>{{serverChangeLog}}</h2>
+      </div>
+      <pre>
+No Server Connected yet
+      </pre>
+    </div>
+    <div class="col-md-1"></div>
   </div>
 </div>
