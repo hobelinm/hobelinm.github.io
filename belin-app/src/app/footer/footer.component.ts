@@ -25,7 +25,7 @@ export class FooterComponent implements OnInit {
     this.visitors = 0;
     this.myViews = 0;
     this.siteViews = 0;
-    this.siteVersion = "0.1.6.2";
+    this.siteVersion = "0.1.6.3";
     this.customButtons = CustomButton.getCustomButtons();
   }
 

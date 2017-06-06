@@ -21,7 +21,7 @@
       <ul class="nav navbar-nav">
         <li *ngFor="let leftItem of navbarItemsLeft" class="{{leftItem.itemClass}}">
           <a *ngIf="leftItem.itemType == 'link'" href="{{leftItem.linkLocation}}">{{leftItem.label}}</a>
-          <a *ngIf="leftItem.itemType == 'ngLink'" routerLink="{{leftItem.linkLocation}}">{{leftItem.label}}</a>
+          <a *ngIf="leftItem.itemType == 'ngLink'" routerLink="{{leftItem.linkLocation}}" href="#">{{leftItem.label}}</a>
           <p *ngIf="leftItem.itemType == 'label'" class="navbar-text">{{leftItem.label}}</p>
           <a *ngIf="leftItem.itemType == 'dropdown'" 
             href="{{leftItem.linkLocation}}" 
@@ -36,7 +36,7 @@
             <li *ngFor="let dropdownItem of leftItem.dropdownItems" 
               class="{{dropdownItem.itemClass}}">
               <a *ngIf="dropdownItem.itemType == 'link'" href="{{dropdownItem.linkLocation}}">{{dropdownItem.label}}</a>
-              <a *ngIf="dropdownItem.itemType == 'ngLink'" routerLink="{{dropdownItem.linkLocation}}">{{dropdownItem.label}}</a>
+              <a *ngIf="dropdownItem.itemType == 'ngLink'" routerLink="{{dropdownItem.linkLocation}}" href="#">{{dropdownItem.label}}</a>
             </li>
           </ul>
         </li>
