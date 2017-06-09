@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomButton } from './custom-button.model';
 
+import { ResourceManagerService } from '../resource-manager.service';
+
+const TOKENS = {
+  ShellVersion: 'Universal.ShellVersion'
+};
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css'],
+  providers: [ResourceManagerService]
 })
 export class FooterComponent implements OnInit {
   public year : string;
@@ -16,7 +23,7 @@ export class FooterComponent implements OnInit {
 
   public customButtons : Array<CustomButton>;
 
-  constructor() {
+  constructor(private resourceManager : ResourceManagerService) {
    }
 
   ngOnInit() {
@@ -25,7 +32,7 @@ export class FooterComponent implements OnInit {
     this.visitors = 0;
     this.myViews = 0;
     this.siteViews = 0;
-    this.siteVersion = "0.1.6.4";
+    this.resourceManager.getSystemConstant(TOKENS.ShellVersion).then(shellVersion => this.siteVersion = shellVersion);
     this.customButtons = CustomButton.getCustomButtons();
   }
 
