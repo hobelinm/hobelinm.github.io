@@ -44,7 +44,8 @@
   </div>
   <script>
     document.body.className = "redirecting";
-    $("#target-location").text = location;
+    let target = location.origin + '?goto=' + location.pathname + location.search.replace('?', '&');
+    $("#target-location").text(target);
   </script>
   <!-- Google Analytics -->
   <script>
