@@ -25,6 +25,16 @@
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
+  <nav class="navbar navbar-inverse navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img class="img-circle" alt="Hugo Belin" src="https://www.gravatar.com/avatar/4e300423bea7dac04dda2f53babfddf0?s=25">
+        </a>
+        <a class="navbar-brand" href="/">Hugo Belin</a>
+      </div>
+    </div>
+  </nav>
   <div class="container" style="padding-top: 70px;">
     <div class="row">
       <div class="col-md-2"></div>
@@ -73,6 +83,7 @@
       document.body.className = "redirecting";
       let target = location.origin + '?goto=' + location.pathname + location.search.replace('?', '&');
       $('.modal-body').html('GitHub servers do not support URL rewrite. Going to: <br/><pre>' + target + '</pre>');
+      location.href = target;
     })
   </script>
   <!-- Google Analytics -->
