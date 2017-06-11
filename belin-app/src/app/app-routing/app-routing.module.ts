@@ -16,6 +16,7 @@ const routes : Routes = [
   { path: "credits",              component: CreditsComponent     },
   { path: "page/:pageName",       component: PageComponent        },
   { path: "section/:sectionName", component: SectionComponent     }
+  //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
