@@ -16,6 +16,7 @@ import { PageComponent        } from './page/page.component';
 import { AboutComponent       } from './about/about.component';
 import { CreditsComponent     } from './credits/credits.component';
 import { SectionComponent     } from './section/section.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SectionComponent     } from './section/section.component';
     PageComponent,
     AboutComponent,
     CreditsComponent,
-    SectionComponent
+    SectionComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

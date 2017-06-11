@@ -34,7 +34,8 @@ export class AppComponent implements OnInit {
       // TODO: Log this via telemetry
       console.log('Go To:' + location.search);
       
-      this.router.navigate([queryParams['goto']], { queryParams: newParams });
+      this.router.navigate([queryParams['goto']], { queryParams: newParams })
+        .catch((rejected) => this.router.navigate(['/404'])); // TODO: Telemetry on the reason
     }
 
   }

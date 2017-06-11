@@ -6,10 +6,18 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'NoLocale.Universal.ShellVersion', 
-        value: '0.1.7.0' 
+        value: '0.1.9.0' 
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Component.ChangeLog.ClientChangeLogs.0.1.9.0', 
+        value: '0.1.9.0 - Updated 404 page' 
+    },
+    { 
+        key: 'en-US.Component.ChangeLog.ClientChangeLogs.0.1.8.0', 
+        value: '0.1.8.0 - Handle redirect scenarios' 
+    },
     { 
         key: 'en-US.Component.ChangeLog.ClientChangeLogs.0.1.7.0', 
         value: '0.1.7.0 - Resource Management Service with constants' 
