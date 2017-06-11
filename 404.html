@@ -40,11 +40,9 @@
             </div>
             <p>
               <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
-              <a class="btn btn-primary btn-lg" href="#" role="button" id="target-location" data-container="body" 
-                data-toggle="popover" 
-                data-placement="bottom" 
-                title="Redirect Details"
-                data-content="Duvar Kalk Dur Ahmet Anne Ofis Ahmet Otur Elnur Sabri Icis Elyas Ne Dur Ne Kalk Ofis Bizim."
+              <a class="btn btn-primary btn-lg" role="button" 
+                data-toggle="modal" 
+                data-target="#redirect-details"
               >Details</a>
             </p>
           </div>
@@ -53,10 +51,29 @@
       <div class="col-md-2"></div>
     </div>
   </div>
+  <!-- Modal -->
+  <div class="modal fade" id="redirect-details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Redirect Details</h4>
+        </div>
+        <div class="modal-body">
+        Duvar Kalk Dur Ahmet Anne Ofis Ahmet Otur Elnur Sabri Icis Elyas Ne Dur Ne Kalk Ofis Bizim.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>
-    document.body.className = "redirecting";
-    let target = location.origin + '?goto=' + location.pathname + location.search.replace('?', '&');
-    $("#target-location").prop('data-contents', 'GitHub servers do not support URL rewrite. Going to: </br>' + target);
+    $(function () {
+      document.body.className = "redirecting";
+      let target = location.origin + '?goto=' + location.pathname + location.search.replace('?', '&');
+      $('.modal-body').html('GitHub servers do not support URL rewrite. Going to: <br/><pre>' + target + '</pre>');
+    })
   </script>
   <!-- Google Analytics -->
   <script>
