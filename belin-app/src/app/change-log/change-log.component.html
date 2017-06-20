@@ -1,13 +1,13 @@
 <div class="container">
   <div class="jumbotron">
-    <h1>{{title}}</h1>
-    <p>{{description}}</p>
+    <h1>{{componentPackage["Title"]}}</h1>
+    <p>{{componentPackage["Description"]}}</p>
     <pre>
 1.2.3.4
-| | | |____ {{revisionPolicy}}
-| | |______ {{buildPolicy}}
-| |________ {{minorPolicy}}
-|__________ {{majorPolicy}}
+| | | |____ {{componentPackage["RevisionPolicy"]}}
+| | |______ {{componentPackage["BuildPolicy"]}}
+| |________ {{componentPackage["MinorPolicy"]}}
+|__________ {{componentPackage["MajorPolicy"]}}
 </pre>
   </div>
 </div>
@@ -16,7 +16,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-5">
       <div class="page-header">
-        <h2>{{clientChangeLog}}</h2>
+        <h2>{{componentPackage["HeaderClientChangeLog"]}}</h2>
       </div>
       <pre>
 <span *ngFor="let changeLog of clientChanges">{{changeLog}}<br/></span>
@@ -24,10 +24,10 @@
     </div>
     <div class="col-md-5">
       <div class="page-header">
-        <h2>{{serverChangeLog}}</h2>
+        <h2>{{componentPackage["HeaderServerChangeLog"]}}</h2>
       </div>
       <pre>
-No Server Connected yet
+<span *ngFor="let changeLog of serverChanges">{{changeLog}}<br/></span>
       </pre>
     </div>
     <div class="col-md-1"></div>

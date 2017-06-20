@@ -1,12 +1,13 @@
 <div class="container">
   <div class="jumbotron">
-    <h1>{{title}}</h1>
-    <p>{{description}}</p>
-    <button type="button" class="btn btn-primary" routerLink="/">{{homeBtnLabel}}</button>
-    <button type="button" class="btn btn-primary" routerLink="/about">{{aboutBtnLabel}}</button>
-    <button type="button" class="btn btn-primary" routerLink="/credits" >{{creditsBtnLabel}}</button>
+    <h1>{{componentPackage["Title"]}}</h1>
+    <p>{{componentPackage["Description"]}}</p>
+    <button 
+      *ngFor="let btn of pageButtons" 
+      class="btn btn-primary" 
+      routerLink="{{btn.Link}}">{{btn.Label}}</button>
   </div>
   <div class="alert alert-danger" role="alert">
-    <p>{{details}}</p>
+    <p>{{componentPackage["Details"]}}</p>
   </div>
 </div>

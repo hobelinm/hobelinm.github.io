@@ -1,10 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit      } from '@angular/core';
 
 import { ResourceManagerService } from '../resource-manager.service';
+import { KeyValuePair           } from '../models/keyvaluepair.model';
 
+const CLASSNAME : string = 'ChangeLog';
+
+/**
+ * Token format:
+ * {en-US|es-MX|Invariant}.{Constant|Server}.{Component|Service|Shared}.{Id}
+ */
 const TOKENS = {
-  ComponentToken: 'Component.ChangeLog',
-  ChangeLogCollection: 'ClientChangeLogs'
+  ChangeLogs: `Constant.${CLASSNAME}.ChangeLog`,
+  ServerChangeLogs: `Server.${CLASSNAME}.ServerChangeLog`,
+  ComponentPackageBaseToken: `Server.${CLASSNAME}`,
+  ComponentPackage: [
+    'Title',
+    'Description',
+    'RevisionPolicy',
+    'BuildPolicy',
+    'MinorPolicy',
+    'MajorPolicy',
+    'HeaderClientChangeLog',
+    'HeaderServerChangeLog'
+  ],
 };
 
 @Component({
@@ -14,35 +32,38 @@ const TOKENS = {
   providers: [ResourceManagerService]
 })
 export class ChangeLogComponent implements OnInit {
-  public title : string;
-  public description : string;
-  public revisionPolicy : string;
-  public buildPolicy : string;
-  public minorPolicy : string;
-  public majorPolicy : string;
-  public clientChangeLog : string;
-  public serverChangeLog : string;
-
+  public componentPackage : KeyValuePair;
   public clientChanges : Array<string>;
+  public serverChanges : Array<string>;
 
-  constructor(private resourceManager : ResourceManagerService) { 
-    this.title = "Change Log";
-    this.description = `Changes made to this website are logged in this page. 
-    A brief description of each change is located next to its version. Versioning assumes the following:`;
-    this.revisionPolicy = `Minor changes performed to the website`;
-    this.buildPolicy = `Incremental changes`;
-    this.minorPolicy = `Feature releases`;
-    this.majorPolicy = `Major feature releases, or big redesign features`;
-    this.clientChangeLog = `Client Change Log`;
-    this.serverChangeLog = `Server Change Log`;
-
+  constructor(private resourceManager : ResourceManagerService) {
+    this.componentPackage = {};
     this.clientChanges = new Array<string>();
+    this.serverChanges = new Array<string>();
   }
 
   ngOnInit() {
+    this.resourceManager.loadComponentResources().then(() => {
+      for(let key of TOKENS.ComponentPackage) {
+        this.setComponentPackageKey(key);
+      }
+    });
+
     this.resourceManager
-      .getConstants(`${TOKENS.ComponentToken}.${TOKENS.ChangeLogCollection}`)
+      .getResources(TOKENS.ChangeLogs)
       .then(clientLogs => this.clientChanges = clientLogs);
+
+    this.resourceManager
+      .getResources(TOKENS.ServerChangeLogs)
+      .then(serverLogs => this.serverChanges = serverLogs);
   }
 
+  /**
+   * Gets resource strings and set them into the component package
+   * @param key Key to read
+   */
+  private setComponentPackageKey(key : string) : void {
+    this.resourceManager.getResource(`${TOKENS.ComponentPackageBaseToken}.${key}`)
+      .then((val : string) => { this.componentPackage[key] = val });
+  }
 }

@@ -4,3 +4,7 @@
 export interface KeyValuePair {
     [Key : string] : string;
 }
+
+export interface EKeyValuePair<T> {
+    [key : string] : T;
+}
