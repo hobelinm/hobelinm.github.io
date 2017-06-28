@@ -24,6 +24,7 @@ const TOKENS = {
 })
 export class PageComponent implements OnInit {
   public article : string;
+  public pageSource : string;
   public componentPackage : KeyValuePair;
 
   constructor(
@@ -36,7 +37,10 @@ export class PageComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
-      .subscribe(pageName => this.article = pageName);
+      .subscribe((pageName : string) => {
+        this.article = pageName;
+        this.pageSource = `/pages/${pageName}.html`;
+      });
     
     this.resourceManager.loadComponentResources().then(() => {
       for(let key of TOKENS.ComponentPackage) {
