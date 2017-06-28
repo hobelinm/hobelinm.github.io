@@ -21,8 +21,12 @@ const TOKENS = {
     'MinorPolicy',
     'MajorPolicy',
     'HeaderClientChangeLog',
-    'HeaderServerChangeLog'
+    'HeaderServerChangeLog',
+    'CurrentRelease',
+    'Codename',
   ],
+  CurrentVersion: `Invariant.Constant.Shared.ShellVersion`,
+  CodeName: `Invariant.Constant.Shared.Release.CodeName`,
 };
 
 @Component({
@@ -47,15 +51,23 @@ export class ChangeLogComponent implements OnInit {
       for(let key of TOKENS.ComponentPackage) {
         this.setComponentPackageKey(key);
       }
+
+      this.resourceManager
+        .getResources(TOKENS.ChangeLogs)
+        .then(clientLogs => this.clientChanges = clientLogs);
+
+      this.resourceManager
+        .getResources(TOKENS.ServerChangeLogs)
+        .then(serverLogs => this.serverChanges = serverLogs);
+
+        this.resourceManager
+          .getResource(TOKENS.CurrentVersion)
+          .then((currentVersion : string) => {this.componentPackage['CurrentVersionValue'] = currentVersion; });
+
+        this.resourceManager
+          .getResource(TOKENS.CodeName)
+          .then((codeName : string) => {this.componentPackage['CodeNameValue'] = codeName; });
     });
-
-    this.resourceManager
-      .getResources(TOKENS.ChangeLogs)
-      .then(clientLogs => this.clientChanges = clientLogs);
-
-    this.resourceManager
-      .getResources(TOKENS.ServerChangeLogs)
-      .then(serverLogs => this.serverChanges = serverLogs);
   }
 
   /**

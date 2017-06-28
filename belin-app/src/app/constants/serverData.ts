@@ -472,6 +472,14 @@ const serverData = {
       value: 'Server Change Log'
     },
     { 
+      key: 'en-US.Server.ChangeLog.CurrentRelease', 
+      value: 'Current Release:' 
+    },
+    { 
+      key: 'en-US.Server.ChangeLog.Codename', 
+      value: 'Codename:' 
+    },
+    { 
       key: 'en-US.Server.ChangeLog.ServerChangeLog.Default', 
       value: 'No server connection yet' 
     },

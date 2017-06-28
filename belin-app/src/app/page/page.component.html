@@ -2,3 +2,13 @@
 <p>
   {{componentPackage["Title"]}}: {{article}} works!
 </p>
+<div class="row text-center">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <!--
+    <iframe src="/pages/{{article}}.html"></iframe>
+    -->
+    <iframe [src]="article"></iframe>
+  </div>
+  <div class="col-md-1"></div>
+</div>
