@@ -1,6 +1,7 @@
-import { Component, OnInit      } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location               } from '@angular/common';
+import { Component, OnInit             } from '@angular/core';
+import { ActivatedRoute, Params        } from '@angular/router';
+import { Location                      } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { ResourceManagerService } from '../resource-manager.service';
 import { KeyValuePair           } from '../models/keyvaluepair.model';
@@ -24,12 +25,13 @@ const TOKENS = {
 })
 export class PageComponent implements OnInit {
   public article : string;
-  public pageSource : string;
+  public pageSource : SafeResourceUrl;
   public componentPackage : KeyValuePair;
 
   constructor(
     private route : ActivatedRoute,
     private location : Location,
+    private sanitizer : DomSanitizer,
     private resourceManager : ResourceManagerService
   ) { 
     this.componentPackage = {};
@@ -39,7 +41,7 @@ export class PageComponent implements OnInit {
     this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
       .subscribe((pageName : string) => {
         this.article = pageName;
-        this.pageSource = `/pages/${pageName}.html`;
+        this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(`/pages/${pageName}.html`);
       });
     
     this.resourceManager.loadComponentResources().then(() => {

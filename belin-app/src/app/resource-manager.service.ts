@@ -241,6 +241,17 @@ export class ResourceManagerService {
 
     this.isLoading = state;
   }
+
+  /**
+   * Detects whether the page is running inside an iFrame or not
+   */
+  public isIframe() : boolean {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+  }
 }
 
 class ComponentCallback {

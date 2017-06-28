@@ -8,7 +8,7 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'Invariant.Constant.Shared.ShellVersion', 
-        value: '0.1.11.1' 
+        value: '0.1.11.2' 
     },
     { 
         key: 'Invariant.Constant.Shared.Release.CodeName', 
@@ -16,6 +16,10 @@ const constantData = [
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.11.2', 
+        value: '0.1.11.2 - Page not found properly formatted' 
+    },
     { 
         key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.11.1', 
         value: '0.1.11.1 - Fixed page source composition' 

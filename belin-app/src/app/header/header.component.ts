@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
   public navbarItemsLeft : Array<TopNavbarMenuItem>;
   public navbarItemsRight : Array<TopNavbarMenuItem>;
   public navbarSearchForm : SearchForm;
-
+  public displayNav : boolean;
   public componentPackage : KeyValuePair;
 
   constructor(private resourceManager : ResourceManagerService) {
@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.navbarItemsLeft = [];
     this.navbarItemsRight = [];
-    //this.navbarItemsRight = TopNavbarMenuItem.getMenuItemsRight();
+    this.displayNav = this.resourceManager.isIframe() === false;
 
     let retrieval : Array<Promise<void>> = [];
     for (let key of TOKENS.ConstSinglePackage) {

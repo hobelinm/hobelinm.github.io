@@ -1,53 +1,55 @@
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-  <div class="container-fluid">
-    <div class="footer-header">
-      <button 
-        type="button" 
-        class="navbar-toggle collapsed" 
-        data-toggle="collapse" 
-        data-target="#app-footer-data-target" 
-        aria-expanded="false">
-        <span class="sr-only">{{componentPackage["ToggleNavigation"]}}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="/">
-        <i class="material-icons {{loadingIcon}}">blur_on</i>
-      </a>
-    </div> <!-- /.footer-header -->
-    <div class="collapse navbar-collapse" id="app-footer-data-target">
-      <ul class="nav navbar-nav">
-        <li><p class="navbar-text">Copyright © {{year}}</p></li>
-        <li class="dropup">
-          <a href="#" 
-              class="dropdown-toggle" 
-              data-toggle="dropdown"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false">
-              Page Views: <span class="versionCode">{{componentPackage["PageViews"]}}</span> <span class="caret"></span>
-            </a>
-          <ul class="dropdown-menu">
-            <li><p class="navbar-text"><i class="material-icons">bubble_chart</i> Visitors: <span class="versionCode">{{componentPackage["Visitors"]}}</span></p></li>
-            <li><p class="navbar-text"><i class="material-icons">insert_chart</i> My Views: <span class="versionCode">{{componentPackage["MyViews"]}}</span></p></li>
-            <li><p class="navbar-text"><i class="material-icons">show_chart</i> Site Views: <span class="versionCode">{{componentPackage["SiteViews"]}}</span></p></li>
-          </ul>
-        </li>
-        <li><p class="navbar-text">Version: <span class="versionCode">{{siteVersion}}</span></p></li>
-      </ul><!-- /.nav /.navbar-nav -->
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <div class="navbar-text addthis_inline_follow_toolbox"></div>
-        </li>
-        <li>
-          <div class="navbar-text custom-buttons">
-            <a *ngFor="let btn of customButtons" href="{{btn.LinkRef}}" target="_blank">
-              <img src="{{btn.ImgRef}}" class="{{btn.Classes}}" alt="{{btn.Alt}}" height="{{btn.Height}}" width="{{btn.Width}}" />
-            </a>
-          </div>
-        </li>
-      </ul>
+<div *ngIf="displayNav">
+  <nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+      <div class="footer-header">
+        <button 
+          type="button" 
+          class="navbar-toggle collapsed" 
+          data-toggle="collapse" 
+          data-target="#app-footer-data-target" 
+          aria-expanded="false">
+          <span class="sr-only">{{componentPackage["ToggleNavigation"]}}</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" routerLink="/">
+          <i class="material-icons {{loadingIcon}}">blur_on</i>
+        </a>
+      </div> <!-- /.footer-header -->
+      <div class="collapse navbar-collapse" id="app-footer-data-target">
+        <ul class="nav navbar-nav">
+          <li><p class="navbar-text">Copyright © {{year}}</p></li>
+          <li class="dropup">
+            <a href="#" 
+                class="dropdown-toggle" 
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false">
+                Page Views: <span class="versionCode">{{componentPackage["PageViews"]}}</span> <span class="caret"></span>
+              </a>
+            <ul class="dropdown-menu">
+              <li><p class="navbar-text"><i class="material-icons">bubble_chart</i> Visitors: <span class="versionCode">{{componentPackage["Visitors"]}}</span></p></li>
+              <li><p class="navbar-text"><i class="material-icons">insert_chart</i> My Views: <span class="versionCode">{{componentPackage["MyViews"]}}</span></p></li>
+              <li><p class="navbar-text"><i class="material-icons">show_chart</i> Site Views: <span class="versionCode">{{componentPackage["SiteViews"]}}</span></p></li>
+            </ul>
+          </li>
+          <li><p class="navbar-text">Version: <span class="versionCode">{{siteVersion}}</span></p></li>
+        </ul><!-- /.nav /.navbar-nav -->
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <div class="navbar-text addthis_inline_follow_toolbox"></div>
+          </li>
+          <li>
+            <div class="navbar-text custom-buttons">
+              <a *ngFor="let btn of customButtons" href="{{btn.LinkRef}}" target="_blank">
+                <img src="{{btn.ImgRef}}" class="{{btn.Classes}}" alt="{{btn.Alt}}" height="{{btn.Height}}" width="{{btn.Width}}" />
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>

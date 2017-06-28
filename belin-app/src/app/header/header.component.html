@@ -1,78 +1,80 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button 
-        type="button" 
-        class="navbar-toggle collapsed" 
-        data-toggle="collapse" 
-        data-target="#app-navbar-data-target" 
-        aria-expanded="false">
-        <span class="sr-only">{{componentPackage['ToggleNavigation']}}</span> <!-- Localize this -->
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="/">
-        <img class="img-circle" alt="{{componentPackage['BrandName']}}" src="{{componentPackage['BrandImageUri']}}">
-      </a>
-      <a class="navbar-brand" routerLink="/">{{componentPackage['BrandName']}}</a>
-    </div><!-- /.navbar-header -->
-    <div class="collapse navbar-collapse" id="app-navbar-data-target">
-      <ul class="nav navbar-nav">
-        <li *ngFor="let leftItem of navbarItemsLeft" class="{{leftItem.itemClass}}">
-          <a *ngIf="leftItem.itemType == 'link'" href="{{leftItem.linkLocation}}">{{leftItem.label}}</a>
-          <a *ngIf="leftItem.itemType == 'ngLink'" routerLink="{{leftItem.linkLocation}}" href="#">{{leftItem.label}}</a>
-          <p *ngIf="leftItem.itemType == 'label'" class="navbar-text">{{leftItem.label}}</p>
-          <a *ngIf="leftItem.itemType == 'dropdown'" 
-            href="{{leftItem.linkLocation}}" 
-            class="dropdown-toggle" 
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false">
-            {{leftItem.label}} <span class="caret"></span>
-          </a>
-          <ul *ngIf="leftItem.itemType == 'dropdown'" class="dropdown-menu">
-            <li *ngFor="let dropdownItem of leftItem.dropdownItems" 
-              class="{{dropdownItem.itemClass}}">
-              <a *ngIf="dropdownItem.itemType == 'link'" href="{{dropdownItem.linkLocation}}">{{dropdownItem.label}}</a>
-              <a *ngIf="dropdownItem.itemType == 'ngLink'" routerLink="{{dropdownItem.linkLocation}}" href="#">{{dropdownItem.label}}</a>
-            </li>
-          </ul>
-        </li>
-      </ul><!-- /.nav /.navbar-nav -->
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngFor="let rightItem of navbarItemsRight" class="{{rightItem.itemClass}}">
-          <a *ngIf="rightItem.itemType == 'link'" href="{{rightItem.linkLocation}}">{{rightItem.label}}</a>
-          <a *ngIf="rightItem.itemType == 'ngLink'" routerLink="{{rightItem.linkLocation}}" href="#">{{rightItem.label}}</a>
-          <p *ngIf="rightItem.itemType == 'label'" class="navbar-text">{{rightItem.label}}</p>
-          <a *ngIf="rightItem.itemType == 'dropdown'" 
-            href="{{rightItem.linkLocation}}" 
-            class="dropdown-toggle" 
-            data-toggle="dropdown"
-            role="button"
-            aria-haspopup="true"
-            aria-expanded="false">
-            {{rightItem.label}} <span class="caret"></span>
-          </a>
-          <ul *ngIf="rightItem.itemType == 'dropdown'" class="dropdown-menu">
-            <li *ngFor="let dropdownItem of rightItem.dropdownItems" 
-              class="{{dropdownItem.itemClass}}">
-              <a *ngIf="dropdownItem.itemType == 'link'" href="{{dropdownItem.linkLocation}}">{{dropdownItem.label}}</a>
-            </li>
-          </ul>
-        </li>
-      </ul><!-- /.nav /.navbar-nav /.navbar-right -->
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="{{navbarSearchForm.placeHolder}}">
-        </div>
-        <button type="submit" disabled="disabled" class="btn btn-default" data-toggle="tooltip" 
-          data-placement="bottom" title="Coming soon"
-          >{{navbarSearchForm.submitButtonLabel}}</button>
-        <!-- To replace the element above once implemented -->
-        <!--<button type="submit" class="btn btn-default">{{navbarSearchForm.submitButtonLabel}}</button>-->
-      </form>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<div *ngIf="displayNav">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button 
+          type="button" 
+          class="navbar-toggle collapsed" 
+          data-toggle="collapse" 
+          data-target="#app-navbar-data-target" 
+          aria-expanded="false">
+          <span class="sr-only">{{componentPackage['ToggleNavigation']}}</span> <!-- Localize this -->
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" routerLink="/">
+          <img class="img-circle" alt="{{componentPackage['BrandName']}}" src="{{componentPackage['BrandImageUri']}}">
+        </a>
+        <a class="navbar-brand" routerLink="/">{{componentPackage['BrandName']}}</a>
+      </div><!-- /.navbar-header -->
+      <div class="collapse navbar-collapse" id="app-navbar-data-target">
+        <ul class="nav navbar-nav">
+          <li *ngFor="let leftItem of navbarItemsLeft" class="{{leftItem.itemClass}}">
+            <a *ngIf="leftItem.itemType == 'link'" href="{{leftItem.linkLocation}}">{{leftItem.label}}</a>
+            <a *ngIf="leftItem.itemType == 'ngLink'" routerLink="{{leftItem.linkLocation}}" href="#">{{leftItem.label}}</a>
+            <p *ngIf="leftItem.itemType == 'label'" class="navbar-text">{{leftItem.label}}</p>
+            <a *ngIf="leftItem.itemType == 'dropdown'" 
+              href="{{leftItem.linkLocation}}" 
+              class="dropdown-toggle" 
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false">
+              {{leftItem.label}} <span class="caret"></span>
+            </a>
+            <ul *ngIf="leftItem.itemType == 'dropdown'" class="dropdown-menu">
+              <li *ngFor="let dropdownItem of leftItem.dropdownItems" 
+                class="{{dropdownItem.itemClass}}">
+                <a *ngIf="dropdownItem.itemType == 'link'" href="{{dropdownItem.linkLocation}}">{{dropdownItem.label}}</a>
+                <a *ngIf="dropdownItem.itemType == 'ngLink'" routerLink="{{dropdownItem.linkLocation}}" href="#">{{dropdownItem.label}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul><!-- /.nav /.navbar-nav -->
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngFor="let rightItem of navbarItemsRight" class="{{rightItem.itemClass}}">
+            <a *ngIf="rightItem.itemType == 'link'" href="{{rightItem.linkLocation}}">{{rightItem.label}}</a>
+            <a *ngIf="rightItem.itemType == 'ngLink'" routerLink="{{rightItem.linkLocation}}" href="#">{{rightItem.label}}</a>
+            <p *ngIf="rightItem.itemType == 'label'" class="navbar-text">{{rightItem.label}}</p>
+            <a *ngIf="rightItem.itemType == 'dropdown'" 
+              href="{{rightItem.linkLocation}}" 
+              class="dropdown-toggle" 
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false">
+              {{rightItem.label}} <span class="caret"></span>
+            </a>
+            <ul *ngIf="rightItem.itemType == 'dropdown'" class="dropdown-menu">
+              <li *ngFor="let dropdownItem of rightItem.dropdownItems" 
+                class="{{dropdownItem.itemClass}}">
+                <a *ngIf="dropdownItem.itemType == 'link'" href="{{dropdownItem.linkLocation}}">{{dropdownItem.label}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul><!-- /.nav /.navbar-nav /.navbar-right -->
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="{{navbarSearchForm.placeHolder}}">
+          </div>
+          <button type="submit" disabled="disabled" class="btn btn-default" data-toggle="tooltip" 
+            data-placement="bottom" title="Coming soon"
+            >{{navbarSearchForm.submitButtonLabel}}</button>
+          <!-- To replace the element above once implemented -->
+          <!--<button type="submit" class="btn btn-default">{{navbarSearchForm.submitButtonLabel}}</button>-->
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</div>

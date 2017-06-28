@@ -50,7 +50,7 @@ export class FooterComponent implements OnInit {
   public year : string;
   public siteVersion : string;
   public loadingIcon : string;
-
+  public displayNav : boolean;
   public customButtons : Array<CustomButton>;
   public componentPackage : KeyValuePair;
 
@@ -58,11 +58,11 @@ export class FooterComponent implements OnInit {
     this.loadingIcon = TOKENS.RotateIcon;
     this.componentPackage = {};
     this.customButtons = [];
-    console.log('Register loading callback...');
     this.resourceManager.registerLoadingCallback(this.updateLoadingStatus, CLASSNAME, this);
    }
 
   ngOnInit() {
+    this.displayNav = this.resourceManager.isIframe() === false;
     this.resourceManager.setLoadingState(true, CLASSNAME);
     this.year = (new Date).getFullYear().toString();
     for (let scalar of TOKENS.ComponentScalars) {
