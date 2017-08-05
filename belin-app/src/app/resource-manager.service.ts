@@ -252,6 +252,14 @@ export class ResourceManagerService {
         return true;
     }
   }
+
+  /**
+   * Gets current session
+   * TODO: Generate random GUID
+   */
+  public getSessionId() : string {
+    return "000";
+  }
 }
 
 class ComponentCallback {

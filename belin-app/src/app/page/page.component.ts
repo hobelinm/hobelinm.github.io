@@ -27,6 +27,7 @@ export class PageComponent implements OnInit {
   public article : string;
   public pageSource : SafeResourceUrl;
   public componentPackage : KeyValuePair;
+  public sessionId : string;
 
   constructor(
     private route : ActivatedRoute,
@@ -35,13 +36,16 @@ export class PageComponent implements OnInit {
     private resourceManager : ResourceManagerService
   ) { 
     this.componentPackage = {};
+    this.sessionId = "";
   }
 
   ngOnInit() {
+    this.sessionId = this.resourceManager.getSessionId();
     this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
       .subscribe((pageName : string) => {
         this.article = pageName;
-        this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(`/pages/${pageName}.html`);
+        this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+          `/pages/${pageName}.html?sessionId=${this.sessionId}`);
       });
     
     this.resourceManager.loadComponentResources().then(() => {
