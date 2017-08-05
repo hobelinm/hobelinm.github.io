@@ -11,6 +11,7 @@ const TOKENS = {
     'Title',
     'Description',
     'Details',
+    'TryOtherPages',
   ],
   ButtonComponents: [
     'Label',
@@ -32,6 +33,7 @@ const TOKENS = {
 export class PageNotFoundComponent implements OnInit {
   public componentPackage : KeyValuePair;
   public pageButtons : Array<Button>;
+  public isIframe : boolean;
 
   public homeBtnLabel : string;
   public aboutBtnLabel : string;
@@ -46,6 +48,7 @@ export class PageNotFoundComponent implements OnInit {
     this.homeBtnLabel = 'Home';
     this.aboutBtnLabel = 'About';
     this.creditsBtnLabel = 'Credits';
+    this.isIframe = this.resourceManager.isIframe();
 
     this.resourceManager.loadComponentResources().then(() => {
       for (let key of TOKENS.ComponentPackage) {

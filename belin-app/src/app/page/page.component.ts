@@ -49,6 +49,8 @@ export class PageComponent implements OnInit {
         this.setComponentPackageKey(key);
       }
     });
+
+    // TODO: Need to set height to window.height(?) - 120 for the iframe
   }
 
   /**

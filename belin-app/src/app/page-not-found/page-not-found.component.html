@@ -1,11 +1,18 @@
 <div class="container">
   <div class="jumbotron">
     <h1>{{componentPackage["Title"]}}</h1>
-    <p>{{componentPackage["Description"]}}</p>
-    <button 
-      *ngFor="let btn of pageButtons" 
-      class="btn btn-primary" 
-      routerLink="{{btn.Link}}">{{btn.Label}}</button>
+    <div *ngIf="!isIframe">
+      <p>{{componentPackage["Description"]}} {{componentPackage["TryOtherPages"]}}</p>
+    </div>
+    <div *ngIf="isIframe">
+      <p>{{componentPackage["Description"]}}</p>
+    </div>
+    <div *ngIf="!isIframe">
+      <button 
+        *ngFor="let btn of pageButtons" 
+        class="btn btn-primary" 
+        routerLink="{{btn.Link}}">{{btn.Label}}</button>
+    </div>
   </div>
   <div class="alert alert-danger" role="alert">
     <p>{{componentPackage["Details"]}}</p>

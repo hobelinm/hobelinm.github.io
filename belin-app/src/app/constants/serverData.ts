@@ -505,7 +505,11 @@ const serverData = {
     },
     { 
       key: 'en-US.Server.PageNotFound.Description', 
-      value: 'Oh snap! Could not find the page. In the meantime you can browse these awesome pages:' 
+      value: 'Oh snap! Could not find the page.' 
+    },
+    { 
+      key: 'en-US.Server.PageNotFound.TryOtherPages', 
+      value: 'In the meantime you can browse these awesome pages:' 
     },
     { 
       key: 'en-US.Server.PageNotFound.Details', 
