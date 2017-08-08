@@ -262,6 +262,11 @@ export class ResourceManagerService {
   }
 }
 
+export class iFrameMessage {
+  public key : string;
+  public value : string;
+}
+
 class ComponentCallback {
   public Name : string;
   public Context : any;

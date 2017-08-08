@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, 
+         OnInit                 } from '@angular/core';
+import { Location               } from '@angular/common';
+import { ActivatedRoute,
+         Params                 } from '@angular/router';
 
-import { ResourceManagerService } from '../resource-manager.service';
+import { iFrameMessage,
+         ResourceManagerService } from '../resource-manager.service';
 import { KeyValuePair           } from '../models/keyvaluepair.model';
 
 const CLASSNAME : string = 'PageNotFound';
+declare var $ : any;
 
 const TOKENS = {
   ComponentPackageBaseToken: `Server.${CLASSNAME}`,
@@ -39,7 +45,10 @@ export class PageNotFoundComponent implements OnInit {
   public aboutBtnLabel : string;
   public creditsBtnLabel : string;
 
-  constructor(private resourceManager : ResourceManagerService) {
+  constructor(
+    private route : ActivatedRoute,
+    private resourceManager : ResourceManagerService
+  ) {
     this.componentPackage = {};
     this.pageButtons = [];
    }
@@ -49,6 +58,24 @@ export class PageNotFoundComponent implements OnInit {
     this.aboutBtnLabel = 'About';
     this.creditsBtnLabel = 'Credits';
     this.isIframe = this.resourceManager.isIframe();
+
+    if(this.isIframe) {
+      this.route.queryParams.subscribe(queryParams => {
+        let sessionId : string = queryParams['sessionId'];
+        if(sessionId === undefined) {
+          console.warn('Running inside iframe but no session id was provided');
+        }
+        else {
+          let key : string = `${sessionId}-childFrameHeight`;
+          let height : string = $(document).height();
+          // TODO: Add these metrics as telemetry
+          let msg : iFrameMessage = new iFrameMessage();
+          msg.key = key;
+          msg.value = height;
+          parent.postMessage(JSON.stringify(msg), '*');
+        }
+      });
+    }
 
     this.resourceManager.loadComponentResources().then(() => {
       for (let key of TOKENS.ComponentPackage) {

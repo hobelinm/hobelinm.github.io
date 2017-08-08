@@ -1,7 +1,11 @@
-import { Component, OnInit             } from '@angular/core';
-import { ActivatedRoute, Params        } from '@angular/router';
+import { Component, 
+         OnInit             } from '@angular/core';
+import { ActivatedRoute, 
+         Params             } from '@angular/router';
 import { Location                      } from '@angular/common';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, 
+         SafeStyle,
+         SafeResourceUrl    } from '@angular/platform-browser';
 
 import { CommManagerService     } from '../comm-manager.service';
 import { ResourceManagerService } from '../resource-manager.service';
@@ -30,6 +34,7 @@ const TOKENS = {
 export class PageComponent implements OnInit {
   public article : string;
   public pageSource : SafeResourceUrl;
+  public pageHeight : SafeStyle;
   public componentPackage : KeyValuePair;
   public sessionId : string;
 
@@ -53,6 +58,8 @@ export class PageComponent implements OnInit {
           `/pages/${pageName}.html?sessionId=${this.sessionId}`);
       });
     
+    this.pageHeight = this.sanitizer.bypassSecurityTrustStyle("500px");
+    
     this.resourceManager.loadComponentResources().then(() => {
       for(let key of TOKENS.ComponentPackage) {
         this.setComponentPackageKey(key);
@@ -68,7 +75,7 @@ export class PageComponent implements OnInit {
   }
 
   public childMessageHandler(key : string, value : string, that : this) : Promise<void> {
-    console.log(`Would set ifram height to: ${value} pixels`);
+    that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
     return Promise.resolve();
   }
 

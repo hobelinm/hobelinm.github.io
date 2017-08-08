@@ -43,7 +43,6 @@ export class CommManagerService {
   }
 
   public processChildMessage(msg : string) : void {
-    console.log(`Child Message: ${msg}`);
     try {
       let parsedMsg : KeyValue = JSON.parse(msg);
       if (parsedMsg.key === null || parsedMsg.key === undefined) {
