@@ -60,7 +60,16 @@ export class PageComponent implements OnInit {
     });
 
     // TODO: Need to set height to window.height(?) - 120 for the iframe
-    console.log(this.commManager.getVersion());
+    this.commManager.subscribeToChildMessage(
+      `${this.sessionId}-childFrameHeight`,
+      this.childMessageHandler,
+      this
+    );
+  }
+
+  public childMessageHandler(key : string, value : string, that : this) : Promise<void> {
+    console.log(`Would set ifram height to: ${value} pixels`);
+    return Promise.resolve();
   }
 
   /**

@@ -24,7 +24,7 @@ export class UtilService {
   }
 
   /**
-   * Calculate has of an object
+   * Calculate hash of an object
    * @param obj to calculate hash from
    */
   public calculateMd5(obj : any) : string {
@@ -239,7 +239,7 @@ export class UtilService {
       return i.toLowerCase();
     };
 
-    return (MD5(obj));
+    return (MD5(obj.toString()));
   }
 
 }

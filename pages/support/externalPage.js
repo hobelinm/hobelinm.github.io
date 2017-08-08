@@ -4,7 +4,7 @@ window.onload = function(e) {
     console.error("URL[" + window.location.href + "] does not contain session id");
   }
   else {
-    let key = sessionId + "-height";
+    let key = sessionId + "-childFrameHeight";
     let height = $(document).height();
     let message = {
       "key" : key,

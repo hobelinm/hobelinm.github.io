@@ -6,7 +6,10 @@ import {
 
 @Injectable()
 export class CommManagerService {
-  private subscriptors : Map<string, Array<(key :string, message : string) => Promise<void>>>
+  private subscriptors : Map<
+    string, 
+    Array<childFrameMessageHandler>
+  >
   private static instance : CommManagerService;
 
   constructor(
@@ -14,7 +17,7 @@ export class CommManagerService {
   ) { 
     CommManagerService.instance = this;
     this.subscriptors = 
-      new Map<string, Array<(key : string, message : string) => Promise<void>>>();
+      new Map<string, Array<childFrameMessageHandler>>();
 
     let eventMethod : string = window.addEventListener ? "addEventListener" : "attachEvent";
     let eventHandler = window[eventMethod];
@@ -39,11 +42,6 @@ export class CommManagerService {
     return CommManagerService.instance;
   }
 
-  // TODO: Remove This
-  public getVersion() : string {
-    return "";
-  }
-
   public processChildMessage(msg : string) : void {
     console.log(`Child Message: ${msg}`);
     try {
@@ -51,11 +49,11 @@ export class CommManagerService {
       if (parsedMsg.key === null || parsedMsg.key === undefined) {
         // TODO: Write Telemetry
         // This message is not from us
-        console.log('Parsed message does not contain key property, ignoring');
+        //console.log('Parsed message does not contain key property, ignoring');
         return;
       }
 
-      let subscriptors : Array<(key : string, message : string) => Promise<void>>;
+      let subscriptors : Array<childFrameMessageHandler>;
       subscriptors = this.subscriptors.get(parsedMsg.key);
       if (subscriptors === null 
         || subscriptors === undefined 
@@ -68,7 +66,11 @@ export class CommManagerService {
 
       let promises : Array<Promise<void>> = [];
       for (let subscriptor of subscriptors) {
-        promises.push(subscriptor(parsedMsg.key, parsedMsg.value));
+        promises.push(
+          subscriptor.handler(
+              parsedMsg.key, 
+              parsedMsg.value,
+              subscriptor.context));
       }
 
       Promise.all(promises).then((values) => {
@@ -79,7 +81,7 @@ export class CommManagerService {
     catch (err) {
       // TODO: Write Telemetry
       // This message is not from us
-      console.log('Unable to parse message, ignoring');
+      //console.log('Unable to parse message, ignoring');
     }
   }
 
@@ -90,9 +92,10 @@ export class CommManagerService {
    */
   public subscribeToChildMessage(
     key : string,
-    subscriptor : (key : string, message : string) => Promise<void>
+    subscriptor : (key : string, message : string, that : any) => Promise<void>,
+    context : any
   ) : void {
-    let currentSubs : Array<(key : string, message : string) => Promise<void>>;
+    let currentSubs : Array<childFrameMessageHandler>;
     currentSubs = this.subscriptors.get(key);
     if (currentSubs === null || currentSubs === undefined) {
       currentSubs = [];
@@ -108,8 +111,16 @@ export class CommManagerService {
       }
     }
 
-    currentSubs.push(subscriptor);
+    let msgHandler : childFrameMessageHandler = new childFrameMessageHandler();
+    msgHandler.handler = subscriptor;
+    msgHandler.context = context;
+    currentSubs.push(msgHandler);
     this.subscriptors.set(key, currentSubs);
   }
 
+}
+
+class childFrameMessageHandler {
+  public handler : (key : string, message : string, that : any) => Promise<void>;
+  public context : any;
 }
