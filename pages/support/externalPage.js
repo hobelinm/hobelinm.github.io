@@ -6,8 +6,13 @@ window.onload = function(e) {
   else {
     let key = sessionId + "-height";
     let height = $(document).height();
+    let message = {
+      "key" : key,
+      "value" : height
+    }
+
     console.log("Page for session [" + key + "] has height: " + height + " px");
-    window.sessionStorage.setItem(key, height);
+    parent.postMessage(JSON.stringify(message), "*");
   }
 }
 
@@ -22,11 +27,11 @@ window.onload = function(e) {
  * @param {*} url 
  */
 function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
 }

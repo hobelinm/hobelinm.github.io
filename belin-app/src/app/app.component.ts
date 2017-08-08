@@ -1,11 +1,18 @@
-import { Component, OnInit      } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location               } from '@angular/common';
+import { Component, 
+         OnInit          } from '@angular/core';
+import { ActivatedRoute, 
+         Params, 
+         Router          } from '@angular/router';
+import { Location        } from '@angular/common';
+import { UtilService     } from './util.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [
+    { provide: UtilService, useClass: UtilService }
+  ],
 })
 export class AppComponent implements OnInit {
   title = 'Work in progress...';

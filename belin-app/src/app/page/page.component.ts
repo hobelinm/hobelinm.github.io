@@ -3,6 +3,7 @@ import { ActivatedRoute, Params        } from '@angular/router';
 import { Location                      } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
+import { CommManagerService     } from '../comm-manager.service';
 import { ResourceManagerService } from '../resource-manager.service';
 import { KeyValuePair           } from '../models/keyvaluepair.model';
 
@@ -21,7 +22,10 @@ const TOKENS = {
   selector: 'app-page',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.css'],
-  providers: [ResourceManagerService],
+  providers: [
+    CommManagerService,
+    ResourceManagerService
+  ],
 })
 export class PageComponent implements OnInit {
   public article : string;
@@ -33,6 +37,7 @@ export class PageComponent implements OnInit {
     private route : ActivatedRoute,
     private location : Location,
     private sanitizer : DomSanitizer,
+    private commManager : CommManagerService,
     private resourceManager : ResourceManagerService
   ) { 
     this.componentPackage = {};
@@ -55,6 +60,7 @@ export class PageComponent implements OnInit {
     });
 
     // TODO: Need to set height to window.height(?) - 120 for the iframe
+    console.log(this.commManager.getVersion());
   }
 
   /**
