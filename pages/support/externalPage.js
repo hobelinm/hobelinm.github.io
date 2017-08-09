@@ -20,7 +20,7 @@ window.onload = function(e) {
   else {
     // Redirect to the proper page
     let target = location.origin + '?goto=' + 
-      location.pathname.replace('/pages/', '/page/') + 
+      location.pathname.replace('/pages/', '/page/').replace('.html', '') + 
       location.search.replace('?', '&');
     location.href = target;
   }
