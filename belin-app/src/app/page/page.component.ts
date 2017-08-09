@@ -4,6 +4,7 @@ import { ActivatedRoute,
          Params             } from '@angular/router';
 import { Location                      } from '@angular/common';
 import { DomSanitizer, 
+         SafeHtml,
          SafeStyle,
          SafeResourceUrl    } from '@angular/platform-browser';
 
@@ -14,6 +15,7 @@ import { KeyValuePair           } from '../models/keyvaluepair.model';
 import 'rxjs/add/operator/switchMap';
 
 const CLASSNAME : string = 'Page';
+const FACEBOOK_COMMENT_SNIPPET : string = '<div class="fb-comments" data-href="fbcw" data-numposts="5"></div>';
 
 const TOKENS = {
   ComponentPackageBaseToken: `Server.${CLASSNAME}`,
@@ -33,6 +35,7 @@ const TOKENS = {
 export class PageComponent implements OnInit {
   public pageSource : SafeResourceUrl;
   public pageHeight : SafeStyle;
+  public facebookComments : SafeHtml;
   public componentPackage : KeyValuePair;
   public sessionId : string;
 
@@ -79,9 +82,10 @@ export class PageComponent implements OnInit {
       this.childMessageHandler,
       this
     );
-  }
 
-  public processPageContent() : void {}
+    this.facebookComments = this.sanitizer.bypassSecurityTrustHtml(
+      FACEBOOK_COMMENT_SNIPPET.replace('fbcw', window.location.href));
+  }
 
   public childMessageHandler(key : string, value : string, that : this) : Promise<void> {
     that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);

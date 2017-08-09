@@ -24,7 +24,7 @@ window.onload = function(e) {
       location.search.replace('?', '&');
     location.href = target;
   }
-}
+};
 
 /**
  * Parses current url and retrieve the given parameter

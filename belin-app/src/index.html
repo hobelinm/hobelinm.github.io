@@ -25,6 +25,25 @@
   <meta name="p:domain_verify" content="eb21c682cbaf4449a00b0d9f15d1c674"/>
 </head>
 <body>
+  <!-- Lib: Facebook -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '102387933434554',
+        xfbml      : true,
+        version    : 'v2.10'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <app-root>Loading...</app-root>
   <!-- Google Analytics -->
   <script>
