@@ -54,15 +54,19 @@ export class PageComponent implements OnInit {
     this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
       .subscribe((pageName : string) => {
         this.article = pageName;
-        let sectionName : string = this.route.params["sectionName"];
-        if (sectionName !== null && sectionName !== undefined && sectionName !== "") {
-          this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
-            `/pages/${sectionName}/${pageName}.html?sessionId=${this.sessionId}`);
-        }
-        else {
-          this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
-            `/pages/${pageName}.html?sessionId=${this.sessionId}`);
-        }
+        this.route.params.switchMap((iParams : Params) => Promise.resolve(iParams["sectionName"]))
+          .subscribe((sectionName : string) => {
+            console.log(`Section Name: ${sectionName}`);
+            console.log(`PageName: ${pageName}`);
+            if (sectionName !== null && sectionName !== undefined && sectionName !== "") {
+              this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+                `/pages/${sectionName}/${pageName}.html?sessionId=${this.sessionId}`);
+            }
+            else {
+              this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+                `/pages/${pageName}.html?sessionId=${this.sessionId}`);
+            }
+          });
       });
     
     this.pageHeight = this.sanitizer.bypassSecurityTrustStyle("500px");
