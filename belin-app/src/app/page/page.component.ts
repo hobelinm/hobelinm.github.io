@@ -54,8 +54,15 @@ export class PageComponent implements OnInit {
     this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
       .subscribe((pageName : string) => {
         this.article = pageName;
-        this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
-          `/pages/${pageName}.html?sessionId=${this.sessionId}`);
+        let sectionName : string = this.route.params["sectionName"];
+        if (sectionName !== null && sectionName !== undefined && sectionName !== "") {
+          this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+            `/pages/${sectionName}/${pageName}.html?sessionId=${this.sessionId}`);
+        }
+        else {
+          this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+            `/pages/${pageName}.html?sessionId=${this.sessionId}`);
+        }
       });
     
     this.pageHeight = this.sanitizer.bypassSecurityTrustStyle("500px");
@@ -66,13 +73,14 @@ export class PageComponent implements OnInit {
       }
     });
 
-    // TODO: Need to set height to window.height(?) - 120 for the iframe
     this.commManager.subscribeToChildMessage(
       `${this.sessionId}-childFrameHeight`,
       this.childMessageHandler,
       this
     );
   }
+
+  public processPageContent() : void {}
 
   public childMessageHandler(key : string, value : string, that : this) : Promise<void> {
     that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);

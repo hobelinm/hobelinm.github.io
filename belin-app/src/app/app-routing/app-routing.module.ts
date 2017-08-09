@@ -11,14 +11,15 @@ import { SectionComponent      } from '../section/section.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes : Routes = [
-  { path: "",                     component: LandingPageComponent  },
-  { path: "about",                component: AboutComponent        },
-  { path: "changelog",            component: ChangeLogComponent    },
-  { path: "credits",              component: CreditsComponent      },
-  { path: "page/:pageName",       component: PageComponent         },
-  { path: "section/:sectionName", component: SectionComponent      },
-  { path: "404",                  component: PageNotFoundComponent },
-  { path: '**',                   component: PageNotFoundComponent }
+  { path: "",                            component: LandingPageComponent  },
+  { path: "about",                       component: AboutComponent        },
+  { path: "changelog",                   component: ChangeLogComponent    },
+  { path: "credits",                     component: CreditsComponent      },
+  { path: "page/:pageName",              component: PageComponent         },
+  { path: "page/:sectionName/:pageName", component: PageComponent         },
+  { path: "section/:sectionName",        component: SectionComponent      },
+  { path: "404",                         component: PageNotFoundComponent },
+  { path: '**',                          component: PageNotFoundComponent }
 ];
 
 @NgModule({
