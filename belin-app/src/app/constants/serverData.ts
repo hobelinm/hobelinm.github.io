@@ -496,10 +496,6 @@ const serverData = {
       value: 'Home Page' 
     },
     { 
-      key: 'en-US.Server.Page.Title', 
-      value: 'Page' 
-    },
-    { 
       key: 'en-US.Server.PageNotFound.Title', 
       value: 'Page Not Found' 
     },

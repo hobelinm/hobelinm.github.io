@@ -19,6 +19,10 @@ window.onload = function(e) {
   }
   else {
     // Redirect to the proper page
+    let target = location.origin + '?goto=' + 
+      location.pathname.replace('/pages/', '/page/') + 
+      location.search.replace('?', '&');
+    location.href = target;
   }
 }
 

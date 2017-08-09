@@ -18,7 +18,6 @@ const CLASSNAME : string = 'Page';
 const TOKENS = {
   ComponentPackageBaseToken: `Server.${CLASSNAME}`,
   ComponentPackage: [
-    'Title'
   ]
 };
 
@@ -32,7 +31,6 @@ const TOKENS = {
   ],
 })
 export class PageComponent implements OnInit {
-  public article : string;
   public pageSource : SafeResourceUrl;
   public pageHeight : SafeStyle;
   public componentPackage : KeyValuePair;
@@ -53,7 +51,6 @@ export class PageComponent implements OnInit {
     this.sessionId = this.resourceManager.getSessionId();
     this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
       .subscribe((pageName : string) => {
-        this.article = pageName;
         this.route.params.switchMap((iParams : Params) => Promise.resolve(iParams["sectionName"]))
           .subscribe((sectionName : string) => {
             console.log(`Section Name: ${sectionName}`);
