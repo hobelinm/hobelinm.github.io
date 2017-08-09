@@ -1,18 +1,24 @@
 window.onload = function(e) {
-  let sessionId = getParameterByName('sessionId');
-  if (!sessionId) {
-    console.error("URL[" + window.location.href + "] does not contain session id");
+  if (isIframe()) {
+    // Send message to parent
+    let sessionId = getParameterByName('sessionId');
+    if (!sessionId) {
+      console.error("URL[" + window.location.href + "] does not contain session id");
+    }
+    else {
+      let key = sessionId + "-childFrameHeight";
+      let height = $(document).height();
+      let message = {
+        "key" : key,
+        "value" : height
+      }
+
+      console.log("Page for session [" + key + "] has height: " + height + " px");
+      parent.postMessage(JSON.stringify(message), "*");
+    }
   }
   else {
-    let key = sessionId + "-childFrameHeight";
-    let height = $(document).height();
-    let message = {
-      "key" : key,
-      "value" : height
-    }
-
-    console.log("Page for session [" + key + "] has height: " + height + " px");
-    parent.postMessage(JSON.stringify(message), "*");
+    // Redirect to the proper page
   }
 }
 
@@ -34,4 +40,16 @@ function getParameterByName(name, url) {
   if (!results) return null;
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+/**
+ * Detects whether the page is running inside an iFrame or not
+ */
+function isIframe() {
+  try {
+    return window.self !== window.top;
+  }
+  catch (e) {
+    return true;
+  }
 }

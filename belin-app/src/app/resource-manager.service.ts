@@ -4,6 +4,7 @@ import { Constants     } from './constants/constants';
 import { ShellPackage, 
          ComponentData } from './constants/serverData';
 import { KeyValuePair  } from './models/keyvaluepair.model';
+import { UtilService   } from './util.service';
 
 // {en-US|es-MX|Invariant}.{Constant|Server}.{Component|Service|Shared}.{Id}
 const TOKENINDEX = {
@@ -32,7 +33,9 @@ export class ResourceManagerService {
   private isLoading : boolean;
   private componentCallbacks : Array<ComponentCallback>;
 
-  constructor() {
+  constructor(
+    private utilService : UtilService
+  ) {
     this.loadingStates = [];
     this.isLoading = true;
     this.componentCallbacks = [];
@@ -258,7 +261,7 @@ export class ResourceManagerService {
    * TODO: Generate random GUID
    */
   public getSessionId() : string {
-    return "000";
+    return this.utilService.getGuid();
   }
 }
 
