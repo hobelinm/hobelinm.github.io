@@ -1,6 +1,7 @@
 window.onload = function(e) {
   if (isIframe()) {
     // Send message to parent
+    let PADDING = 30;
     let sessionId = getParameterByName('sessionId');
     if (!sessionId) {
       console.error("URL[" + window.location.href + "] does not contain session id");
@@ -17,7 +18,7 @@ window.onload = function(e) {
       parent.postMessage(JSON.stringify(message), "*");
 
       key = sessionId + "-childFrameWidth";
-      let width = $(document).width()
+      let width = $(document).width() + PADDING;
       message = {
         "key" : key,
         "value" : width
