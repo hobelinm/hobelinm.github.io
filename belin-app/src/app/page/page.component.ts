@@ -35,6 +35,7 @@ const TOKENS = {
 export class PageComponent implements OnInit {
   public pageSource : SafeResourceUrl;
   public pageHeight : SafeStyle;
+  public pageWidth : SafeStyle;
   public facebookComments : SafeHtml;
   public componentPackage : KeyValuePair;
   public sessionId : string;
@@ -70,6 +71,7 @@ export class PageComponent implements OnInit {
       });
     
     this.pageHeight = this.sanitizer.bypassSecurityTrustStyle("500px");
+    this.pageWidth = this.sanitizer.bypassSecurityTrustStyle("500px");
     
     this.resourceManager.loadComponentResources().then(() => {
       for(let key of TOKENS.ComponentPackage) {
@@ -79,7 +81,13 @@ export class PageComponent implements OnInit {
 
     this.commManager.subscribeToChildMessage(
       `${this.sessionId}-childFrameHeight`,
-      this.childMessageHandler,
+      this.childHeightHandler,
+      this
+    );
+
+    this.commManager.subscribeToChildMessage(
+      `${this.sessionId}-childFrameWidth`,
+      this.childWidthHandler,
       this
     );
 
@@ -87,8 +95,13 @@ export class PageComponent implements OnInit {
       FACEBOOK_COMMENT_SNIPPET.replace('fbcw', window.location.href));
   }
 
-  public childMessageHandler(key : string, value : string, that : this) : Promise<void> {
+  public childHeightHandler(key : string, value : string, that : this) : Promise<void> {
     that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
+    return Promise.resolve();
+  }
+
+  public childWidthHandler(key: string, value : string, that : this) : Promise<void> {
+    this.pageWidth = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
     return Promise.resolve();
   }
 

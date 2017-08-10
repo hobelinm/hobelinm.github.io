@@ -11,9 +11,19 @@ window.onload = function(e) {
       let message = {
         "key" : key,
         "value" : height
-      }
+      };
 
       console.log("Page for session [" + key + "] has height: " + height + " px");
+      parent.postMessage(JSON.stringify(message), "*");
+
+      key = sessionId + "-childFrameWidth";
+      let width = $(document).width()
+      message = {
+        "key" : key,
+        "value" : width
+      };
+
+      console.log("Page for session [" + key + "] has width: " + width + " px");
       parent.postMessage(JSON.stringify(message), "*");
     }
   }
