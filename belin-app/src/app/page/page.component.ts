@@ -101,7 +101,7 @@ export class PageComponent implements OnInit {
   }
 
   public childWidthHandler(key: string, value : string, that : this) : Promise<void> {
-    this.pageWidth = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
+    that.pageWidth = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
     return Promise.resolve();
   }
 
