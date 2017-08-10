@@ -8,7 +8,7 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'Invariant.Constant.Shared.ShellVersion', 
-        value: '0.1.12.4' 
+        value: '0.1.12.5' 
     },
     { 
         key: 'Invariant.Constant.Shared.Release.CodeName', 
@@ -16,6 +16,10 @@ const constantData = [
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.12.5', 
+        value: '0.1.12.5 - Apply CSS to Facebook Comments' 
+    },
     { 
         key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.12.4', 
         value: '0.1.12.4 - Embedded content sends width' 
