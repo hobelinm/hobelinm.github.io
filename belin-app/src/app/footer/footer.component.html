@@ -1,55 +1,90 @@
 <div *ngIf="displayNav">
-  <nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="container-fluid">
-      <div class="footer-header">
-        <button 
-          type="button" 
-          class="navbar-toggle collapsed" 
-          data-toggle="collapse" 
-          data-target="#app-footer-data-target" 
-          aria-expanded="false">
-          <span class="sr-only">{{componentPackage["ToggleNavigation"]}}</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" routerLink="/">
-          <i class="material-icons {{loadingIcon}}">blur_on</i>
-        </a>
-      </div> <!-- /.footer-header -->
-      <div class="collapse navbar-collapse" id="app-footer-data-target">
-        <ul class="nav navbar-nav">
-          <li><p class="navbar-text">Copyright © {{year}}</p></li>
-          <li class="dropup">
-            <a href="#" 
-                class="dropdown-toggle" 
-                data-toggle="dropdown"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false">
-                Page Views: <span class="versionCode">{{componentPackage["PageViews"]}}</span> <span class="caret"></span>
-              </a>
-            <ul class="dropdown-menu">
-              <li><p class="navbar-text"><i class="material-icons">bubble_chart</i> Visitors: <span class="versionCode">{{componentPackage["Visitors"]}}</span></p></li>
-              <li><p class="navbar-text"><i class="material-icons">insert_chart</i> My Views: <span class="versionCode">{{componentPackage["MyViews"]}}</span></p></li>
-              <li><p class="navbar-text"><i class="material-icons">show_chart</i> Site Views: <span class="versionCode">{{componentPackage["SiteViews"]}}</span></p></li>
-            </ul>
-          </li>
-          <li><p class="navbar-text">Version: <span class="versionCode">{{siteVersion}}</span></p></li>
-        </ul><!-- /.nav /.navbar-nav -->
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <div class="navbar-text addthis_inline_follow_toolbox"></div>
-          </li>
-          <li>
-            <div class="navbar-text custom-buttons">
-              <a *ngFor="let btn of customButtons" href="{{btn.LinkRef}}" target="_blank">
-                <img src="{{btn.ImgRef}}" class="{{btn.Classes}}" alt="{{btn.Alt}}" height="{{btn.Height}}" width="{{btn.Width}}" />
-              </a>
-            </div>
-          </li>
-        </ul>
+  <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/">
+      <i class="material-icons {{loadingIcon}}">blur_on</i>
+    </a>
+
+    <button type="button" 
+      class="navbar-toggler" 
+      data-toggle="collapse" 
+      data-target="#app-footer-data-target" 
+      aria-expanded="false"></button>
+
+    <div class="collapse navbar-collapse mr-auto" id="app-footer-data-target">
+      <span class="nav-item navbar-text">Copyright © {{year}}</span>
+      
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#footerStatsModal">
+        Page Views: <span class="versionCode">{{componentPackage["PageViews"]}}</span>
+      </button>
+
+      <span class="nav-item navbar-text">Version: <span class="versionCode">{{siteVersion}}</span></span>
+    </div>
+    
+    <div class="navbar-nav navbar-right container" id="footer-nav-right">
+      <div class="row nav-item float-right">
+        <div class="addthis_inline_follow_toolbox" id="add_this_share_buttons"></div>
+        <div class="custom-buttons">
+          <a *ngFor="let btn of customButtons" href="{{btn.LinkRef}}" target="_blank">
+            <img src="{{btn.ImgRef}}" class="{{btn.Classes}}" alt="{{btn.Alt}}" height="{{btn.Height}}" width="{{btn.Width}}" />
+          </a>
+        </div>
       </div>
     </div>
   </nav>
+
+  <div 
+    class="modal fade" 
+    id="footerStatsModal" 
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="footerStatsModal" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <div class="modal-body">
+            <p>Website Stats:</p>
+            <table class="table table-sm table-striped table-hover table-inverse">
+              <thead>
+                <th>#</th>
+                <th>Definition</th>
+                <th>Metric</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><i class="material-icons">bubble_chart</i></th>
+                  <th>Visitors:</th>
+                  <th><span class="versionCode">{{componentPackage["Visitors"]}}</span></th>
+                </tr>
+                <tr>
+                  <th scope="row"><i class="material-icons">show_chart</i></th>
+                  <th>My Views:</th>
+                  <th><span class="versionCode">{{componentPackage["MyViews"]}}</span></th>
+                </tr>
+                <tr>
+                  <th scope="row"><i class="material-icons">insert_chart</i></th>
+                  <th>Site Views:</th>
+                  <th><span class="versionCode">{{componentPackage["SiteViews"]}}</span></th>
+                </tr>
+                <tr>
+                  <th scope="row"><i class="material-icons">timeline</i></th>
+                  <th>Page Views:</th>
+                  <th><span class="versionCode">{{componentPackage["PageViews"]}}</span></th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>

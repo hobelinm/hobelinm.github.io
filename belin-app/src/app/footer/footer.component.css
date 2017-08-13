@@ -10,14 +10,22 @@ app-footer .mdl-mini-footer {
 app-footer .mdl-mini-footer__right-section {
     padding-right: 20px;
 }
+
+#add_this_share_buttons {
+    padding-top: -10px;
+}
 */
 
-.versionCode {
-  font-family: 'Inconsolata', monospace;
+#footer-nav-right {
+    width: 750px;
 }
 
 .custom-buttons {
     padding-top: 10px;
+}
+
+.versionCode {
+  font-family: 'Inconsolata', monospace;
 }
 
 .background-color-white {
@@ -28,6 +36,10 @@ app-footer .mdl-mini-footer__right-section {
     -webkit-animation:spin 4s linear infinite;
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;
+}
+
+.nav-item {
+    padding-right: 10px;
 }
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }

@@ -73,6 +73,12 @@ export class PageNotFoundComponent implements OnInit {
           msg.key = key;
           msg.value = height;
           parent.postMessage(JSON.stringify(msg), '*');
+
+          // Tell the parent not to enable Facebook comments on this page
+          let noComment : iFrameMessage = new iFrameMessage();
+          noComment.key = `${sessionId}-disableFacebookComments`;
+          noComment.value = "true";
+          parent.postMessage(JSON.stringify(noComment), '*');
         }
       });
     }

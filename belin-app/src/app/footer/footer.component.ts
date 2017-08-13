@@ -16,7 +16,7 @@ const TOKENS = {
   InvariantComponentPackageBaseToken: `Invariant.Server.${CLASSNAME}`,
   RotateIcon: 'rotate-img',
   SingleKeys: [
-    'ToggleNavigation'
+    'ToggleDropdown'
   ],
   ComponentScalars: [
     'PageViews',
@@ -69,7 +69,9 @@ export class FooterComponent implements OnInit {
       this.setScalarValue(scalar);
     }
 
-    this.resourceManager.getResource(TOKENS.ShellVersion).then(shellVersion => this.siteVersion = shellVersion);
+    this.resourceManager
+      .getResource(TOKENS.ShellVersion)
+      .then(shellVersion => this.siteVersion = shellVersion);
 
     this.resourceManager.loadComponentResources().then(() => {
       for (let key of TOKENS.CustomButtons) {

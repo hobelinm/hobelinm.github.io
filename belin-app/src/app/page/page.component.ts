@@ -39,6 +39,7 @@ export class PageComponent implements OnInit {
   public facebookComments : SafeHtml;
   public componentPackage : KeyValuePair;
   public sessionId : string;
+  public displayComments : boolean;
 
   constructor(
     private route : ActivatedRoute,
@@ -49,9 +50,11 @@ export class PageComponent implements OnInit {
   ) { 
     this.componentPackage = {};
     this.sessionId = "";
+    this.displayComments = true;
   }
 
   ngOnInit() {
+    this.resourceManager.setLoadingState(true, CLASSNAME);
     this.sessionId = this.resourceManager.getSessionId();
     this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
       .subscribe((pageName : string) => {
@@ -79,6 +82,7 @@ export class PageComponent implements OnInit {
       }
     });
 
+    // Subscribe to iFrame messages
     this.commManager.subscribeToChildMessage(
       `${this.sessionId}-childFrameHeight`,
       this.childHeightHandler,
@@ -91,16 +95,53 @@ export class PageComponent implements OnInit {
       this
     );
 
+    this.commManager.subscribeToChildMessage(
+      `${this.sessionId}-disableFacebookComments`,
+      this.childDisableFacebook,
+      this
+    );
+
     this.facebookComments = this.sanitizer.bypassSecurityTrustHtml(
       FACEBOOK_COMMENT_SNIPPET.replace('fbcw', window.location.href));
   }
 
-  public childHeightHandler(key : string, value : string, that : this) : Promise<void> {
-    that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
+  public childDisableFacebook(
+    key : string,
+    value : string,
+    that : this
+  ) : Promise<void> {
+    console.log("About to disable comments");
+    that.displayComments = false;
     return Promise.resolve();
   }
 
-  public childWidthHandler(key: string, value : string, that : this) : Promise<void> {
+  /**
+   * Listens to the right event from child fram to adjust height
+   * @param key being listened to
+   * @param value height to apply
+   * @param that an instance of this
+   */
+  public childHeightHandler(
+    key : string, 
+    value : string, 
+    that : this
+  ) : Promise<void> {
+    that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
+    that.resourceManager.setLoadingState(true, CLASSNAME);
+    return Promise.resolve();
+  }
+
+  /**
+   * Listens to the right event from child frame to adjust width
+   * @param key being listened to
+   * @param value width to apply
+   * @param that an instance of this
+   */
+  public childWidthHandler(
+    key : string, 
+    value : string, 
+    that : this
+  ) : Promise<void> {
     that.pageWidth = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
     return Promise.resolve();
   }

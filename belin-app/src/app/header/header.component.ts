@@ -15,7 +15,6 @@ const TOKENS = {
     'BrandName'
   ],
   LocaleSinglePackage: [
-    'ToggleNavigation',
     'SearchForm.Placeholder',
     'SearchForm.Button',
   ],

@@ -7,9 +7,13 @@
       [style.height]="pageHeight"
       [style.width]="pageWidth">
     </iframe>
-    <div style="text-align:center;" 
-      [style.width]="pageWidth" 
-      [innerHTML]="facebookComments">
+    
+    <div *ngIf="displayComments" 
+      id="content-page-facbook-comments"
+      style="text-align:center; padding-left:144px;" 
+      [style.width]="pageWidth">
+
+      <div [innerHTML]="facebookComments"></div>
     </div>
   </div>
   <div class="col-md-1"></div>

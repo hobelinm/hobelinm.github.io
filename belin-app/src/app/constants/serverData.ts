@@ -8,8 +8,8 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const serverData = {
   shellPackage: [
     {
-      key: 'en-US.Server.Footer.ToggleNavigation', 
-      value: 'Toggle Navigation'
+      key: 'en-US.Server.Footer.ToggleDropdown', 
+      value: 'Toggle Dropdown'
     },
     {
       key: 'Invariant.Server.Footer.ButtonTableauPublic.LinkRef', 
@@ -132,10 +132,6 @@ const serverData = {
       value: 'Hugo Belin' 
     },
     { 
-      key: 'en-US.Server.Header.SingleKeys.ToggleNavigation', 
-      value: 'Toggle Navigation' 
-    },
-    { 
       key: 'en-US.Server.Header.SingleKeys.SearchForm.Placeholder', 
       value: 'Search' 
     },
@@ -196,7 +192,7 @@ const serverData = {
     },
     { 
       key: 'en-US.Server.Header.SingleKeys.MenuItem.Site.itemClass', 
-      value: 'dropdown' 
+      value: 'nav-item dropdown' 
     },
     { 
       key: 'en-US.Server.Header.SingleKeys.MenuItem.Site.linkLocation', 
@@ -238,7 +234,7 @@ const serverData = {
     },
     { 
       key: 'en-US.Server.Header.SingleKeys.MenuItem.Language.itemClass', 
-      value: 'dropdown' 
+      value: 'nav-item dropdown' 
     },
     { 
       key: 'en-US.Server.Header.SingleKeys.MenuItem.Language.linkLocation', 
@@ -430,7 +426,7 @@ const serverData = {
     },
     { 
       key: 'en-US.Server.Header.SingleKeys.DropdownItem.separator.itemClass', 
-      value: 'divider' 
+      value: 'dropdown-divider' 
     },
     { 
       key: 'en-US.Server.Header.SingleKeys.DropdownItem.separator.itemType', 

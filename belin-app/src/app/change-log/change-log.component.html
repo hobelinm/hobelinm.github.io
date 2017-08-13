@@ -1,4 +1,4 @@
-<div class="container">
+<div class=" container">
   <div class="jumbotron">
     <h1>{{componentPackage["Title"]}}</h1>
     <p>{{componentPackage["Description"]}}</p>
@@ -19,7 +19,8 @@
       <div class="page-header">
         <h2>{{componentPackage["HeaderClientChangeLog"]}}</h2>
       </div>
-      <pre>
+      <pre class="bg-secondary border border-secondary">
+        <br>
 <span *ngFor="let changeLog of clientChanges">{{changeLog}}<br/></span>
       </pre>
     </div>
@@ -27,7 +28,8 @@
       <div class="page-header">
         <h2>{{componentPackage["HeaderServerChangeLog"]}}</h2>
       </div>
-      <pre>
+      <pre class="bg-secondary border border-secondary">
+        <br>
 <span *ngFor="let changeLog of serverChanges">{{changeLog}}<br/></span>
       </pre>
     </div>

@@ -2,16 +2,20 @@
   <div class="jumbotron">
     <h1>{{componentPackage["Title"]}}</h1>
     <div *ngIf="!isIframe">
-      <p>{{componentPackage["Description"]}} {{componentPackage["TryOtherPages"]}}</p>
+      <p class="lead">{{componentPackage["Description"]}}</p>
+      <hr class="my-4">
+      <p>{{componentPackage["TryOtherPages"]}}</p>
     </div>
     <div *ngIf="isIframe">
-      <p>{{componentPackage["Description"]}}</p>
+      <p class="lead">{{componentPackage["Description"]}}</p>
     </div>
     <div *ngIf="!isIframe">
-      <button 
-        *ngFor="let btn of pageButtons" 
-        class="btn btn-primary" 
-        routerLink="{{btn.Link}}">{{btn.Label}}</button>
+      <div class="btn-group" role="group" aria-label="Page Options">
+        <button 
+          *ngFor="let btn of pageButtons" 
+          class="btn btn-primary" 
+          routerLink="{{btn.Link}}">{{btn.Label}}</button>
+      </div>
     </div>
   </div>
   <div class="alert alert-danger" role="alert">

@@ -8,14 +8,18 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'Invariant.Constant.Shared.ShellVersion', 
-        value: '0.1.12.5' 
+        value: '0.1.13.0' 
     },
     { 
         key: 'Invariant.Constant.Shared.Release.CodeName', 
-        value: '4-LOM' 
+        value: '8D8' 
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.13.0', 
+        value: '0.1.13.0 - Upgraded UI to Bootstrap 4.0 - beta' 
+    },
     { 
         key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.12.5', 
         value: '0.1.12.5 - Apply CSS to Facebook Comments' 
