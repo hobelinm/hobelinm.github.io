@@ -7,19 +7,11 @@ window.onload = function(e) {
       console.error("URL[" + window.location.href + "] does not contain session id");
     }
     else {
-      let key = sessionId + "-childFrameHeight";
-      let height = $(document).height();
-      let message = {
-        "key" : key,
-        "value" : height
-      };
+      sendHeightData();
 
-      console.log("Page for session [" + key + "] has height: " + height + " px");
-      parent.postMessage(JSON.stringify(message), "*");
-
-      key = sessionId + "-childFrameWidth";
+      let key = sessionId + "-childFrameWidth";
       let width = $(document).width() + PADDING;
-      message = {
+      let message = {
         "key" : key,
         "value" : width
       };
@@ -36,6 +28,39 @@ window.onload = function(e) {
     location.href = target;
   }
 };
+
+// Monitor page height to send it to parent
+$(function () {
+  let previousHeight = $(document).height();
+  $(document).attrchange({
+    callback: function (e) {
+      let currentHeight = $(this).height();
+      if (previousHeight !== currentHeight) {
+        let msg = '[ChildFrame.ChangedHeight] Change height: ' + previousHeight;
+        msg = msg + 'px to ' + currentHeight + 'px';
+        console.log(msg);
+        
+        sendHeightData();
+        previousHeight = currentHeight;
+      }
+    }
+  }).resizable();
+});
+
+/**
+ * Sends height data to parent frame
+ */
+function sendHeightData() {
+  let key = sessionId + "-childFrameHeight";
+  let height = $(document).height();
+  let message = {
+    "key" : key,
+    "value" : height
+  };
+
+  console.log("[ChildFrame] Page for session [" + key + "] has height: " + height + " px");
+  parent.postMessage(JSON.stringify(message), "*");
+}
 
 /**
  * Parses current url and retrieve the given parameter
