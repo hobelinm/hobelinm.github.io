@@ -39,7 +39,7 @@ $(function () {
         let msg = '[ChildFrame.ChangedHeight] Change height: ' + previousHeight;
         msg = msg + 'px to ' + currentHeight + 'px';
         console.log(msg);
-        
+
         sendHeightData();
         previousHeight = currentHeight;
       }
@@ -51,6 +51,7 @@ $(function () {
  * Sends height data to parent frame
  */
 function sendHeightData() {
+  let sessionId = getParameterByName('sessionId');
   let key = sessionId + "-childFrameHeight";
   let height = $(document).height();
   let message = {
