@@ -8,6 +8,7 @@ import { DomSanitizer,
          SafeStyle,
          SafeResourceUrl    } from '@angular/platform-browser';
 
+import { AddressBook            } from '../constants/address';
 import { CommManagerService     } from '../comm-manager.service';
 import { ResourceManagerService } from '../resource-manager.service';
 import { KeyValuePair           } from '../models/keyvaluepair.model';

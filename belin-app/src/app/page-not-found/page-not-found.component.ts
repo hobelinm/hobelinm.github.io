@@ -1,3 +1,5 @@
+/// <reference path="../../../node_modules/@types/jquery/index.d.ts" />
+
 import { Component, 
          OnInit                 } from '@angular/core';
 import { Location               } from '@angular/common';
@@ -9,8 +11,6 @@ import { iFrameMessage,
 import { KeyValuePair           } from '../models/keyvaluepair.model';
 
 const CLASSNAME : string = 'PageNotFound';
-declare var $ : any;
-
 const TOKENS = {
   ComponentPackageBaseToken: `Server.${CLASSNAME}`,
   ComponentPackage: [
@@ -67,7 +67,7 @@ export class PageNotFoundComponent implements OnInit {
         }
         else {
           let key : string = `${sessionId}-childFrameHeight`;
-          let height : string = $(document).height();
+          let height : string = $(document).height().toString();
           // TODO: Add these metrics as telemetry
           let msg : iFrameMessage = new iFrameMessage();
           msg.key = key;

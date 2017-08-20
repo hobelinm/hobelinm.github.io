@@ -1,8 +1,12 @@
+/// <reference path="../../../node_modules/@types/jquery/index.d.ts" />
+
 import { Component, OnInit } from '@angular/core';
 import { CustomButton } from './custom-button.model';
 
-import { ResourceManagerService } from '../resource-manager.service';
+import { AddressBook            } from '../constants/address';
 import { KeyValuePair           } from '../models/keyvaluepair.model';
+import { MessengerService       } from '../messenger.service';
+import { ResourceManagerService } from '../resource-manager.service';
 
 const CLASSNAME : string = 'Footer';
 
@@ -38,13 +42,22 @@ const TOKENS = {
     'Width',
     'Classes'
   ],
+  Styles: {
+    FooterPadding: 20
+  },
+  Selectors: {
+    Footer: 'nav.fixed-bottom'
+  },
 };
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
-  providers: [ResourceManagerService]
+  providers: [
+    MessengerService,
+    ResourceManagerService
+  ],
 })
 export class FooterComponent implements OnInit {
   public year : string;
@@ -54,11 +67,17 @@ export class FooterComponent implements OnInit {
   public customButtons : Array<CustomButton>;
   public componentPackage : KeyValuePair;
 
-  constructor(private resourceManager : ResourceManagerService) {
+  constructor(
+    private messenger : MessengerService,
+    private resourceManager : ResourceManagerService) 
+  {
     this.loadingIcon = TOKENS.RotateIcon;
     this.componentPackage = {};
     this.customButtons = [];
-    this.resourceManager.registerLoadingCallback(this.updateLoadingStatus, CLASSNAME, this);
+    this.resourceManager.registerLoadingCallback(
+      this.updateLoadingStatus, 
+      CLASSNAME, 
+      this);
    }
 
   ngOnInit() {
@@ -82,7 +101,16 @@ export class FooterComponent implements OnInit {
         this.setComponentPackageKey(key, false);
       }
     }).then(() => { 
-      this.resourceManager.setLoadingState(false, CLASSNAME); 
+      this.resourceManager.setLoadingState(false, CLASSNAME);
+      let contentPadding : number = 
+        $(TOKENS.Selectors.Footer).height() + TOKENS.Styles.FooterPadding;
+      console.log(`Content Padding Bottom: ${contentPadding}`);
+      let message : KeyValuePair = {};
+      message['Subject'] = 'Footer.Height';
+      message['Height'] = contentPadding.toString();
+      this.messenger.sendMessage(
+        AddressBook.get('AppComponent'), 
+        JSON.stringify(message));
     });
   }
 

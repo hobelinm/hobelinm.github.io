@@ -27,24 +27,6 @@ window.onload = function(e) {
       location.search.replace('?', '&');
     location.href = target;
   }
-  
-  // Monitor page height to send it to parent
-  $(function () {
-    let previousHeight = $(document).height();
-    $(document).attrchange({
-      callback: function (e) {
-        let currentHeight = $(this).height();
-        if (previousHeight !== currentHeight) {
-          let msg = '[ChildFrame.ChangedHeight] Change height: ' + previousHeight;
-          msg = msg + 'px to ' + currentHeight + 'px';
-          console.log(msg);
-  
-          sendHeightData();
-          previousHeight = currentHeight;
-        }
-      }
-    }).resizable();
-  });
 };
 
 /**
