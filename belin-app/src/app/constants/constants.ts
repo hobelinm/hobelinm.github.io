@@ -8,7 +8,7 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'Invariant.Constant.Shared.ShellVersion', 
-        value: '0.1.13.1' 
+        value: '0.1.14.0' 
     },
     { 
         key: 'Invariant.Constant.Shared.Release.CodeName', 
@@ -16,6 +16,10 @@ const constantData = [
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.14.0', 
+        value: '0.1.14.0 - Messaging service, set footer height' 
+    },
     { 
         key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.13.1', 
         value: '0.1.13.1 - Minor CSS upgrades' 
