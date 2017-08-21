@@ -154,6 +154,7 @@ export class PageComponent implements OnInit {
     value : string, 
     that : this
   ) : Promise<void> {
+    console.log(`Setting iframe height to ${value}px`);
     that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
     that.resourceManager.setLoadingState(true, Constants.ClassName);
     return Promise.resolve();
@@ -170,6 +171,7 @@ export class PageComponent implements OnInit {
     value : string, 
     that : this
   ) : Promise<void> {
+    console.log(`Setting iframe width to ${value}px`);
     that.pageWidth = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
     return Promise.resolve();
   }
