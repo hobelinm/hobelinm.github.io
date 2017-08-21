@@ -4,10 +4,17 @@
     <iframe 
       id="site-content"
       class="embed-responsive-item container-fluid" 
-      [src]="pageSource" 
-      [style.height]="pageHeight"
-      [style.width]="pageWidth">
+      [src]="pageSource">
     </iframe>
+    <!--
+      <iframe 
+        id="site-content"
+        class="embed-responsive-item container-fluid" 
+        [src]="pageSource" 
+        [style.height]="pageHeight"
+        [style.width]="pageWidth">
+      </iframe>
+    -->
     
     <div *ngIf="displayComments" 
       id="content-page-facebook-comments"
