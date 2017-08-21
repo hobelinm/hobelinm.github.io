@@ -85,8 +85,8 @@ export class PageComponent implements OnInit {
 
             let iframeElement : HTMLIFrameElement = 
               <HTMLIFrameElement> document.getElementById(Constants.iFrameId);
-              
-            $(Constants.iFrameLocator).ready((data : JQueryStatic<HTMLElement>) => {
+
+            $(iframeElement.contentWindow.document).ready((data : JQueryStatic<HTMLElement>) => {
               this.childHeightHandler(
                 `${this.sessionId}-childFrameHeight`,
                 iframeElement.contentWindow.document.body.scrollHeight.toString(),
