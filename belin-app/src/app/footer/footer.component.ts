@@ -104,7 +104,6 @@ export class FooterComponent implements OnInit {
       this.resourceManager.setLoadingState(false, CLASSNAME);
       let contentPadding : number = 
         $(TOKENS.Selectors.Footer).height() + TOKENS.Styles.FooterPadding;
-      console.log(`Content Padding Bottom: ${contentPadding}`);
       let message : KeyValuePair = {};
       message['Subject'] = 'Footer.Height';
       message['Height'] = contentPadding.toString();

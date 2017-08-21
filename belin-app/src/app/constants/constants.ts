@@ -8,14 +8,18 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'Invariant.Constant.Shared.ShellVersion', 
-        value: '0.1.14.0' 
+        value: '0.1.14.1' 
     },
     { 
         key: 'Invariant.Constant.Shared.Release.CodeName', 
-        value: '8D8' 
+        value: 'Clone 99' 
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.14.1', 
+        value: '0.1.14.1 - No longer rely on iframe messaging' 
+    },
     { 
         key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.14.0', 
         value: '0.1.14.0 - Messaging service, set footer height' 

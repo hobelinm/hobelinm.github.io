@@ -1,12 +1,14 @@
+/// <reference path="../../../node_modules/@types/jquery/index.d.ts" />
+
 import { Component, 
-         OnInit             } from '@angular/core';
+         OnInit                 } from '@angular/core';
 import { ActivatedRoute, 
-         Params             } from '@angular/router';
-import { Location                      } from '@angular/common';
+         Params                 } from '@angular/router';
+import { Location               } from '@angular/common';
 import { DomSanitizer, 
          SafeHtml,
          SafeStyle,
-         SafeResourceUrl    } from '@angular/platform-browser';
+         SafeResourceUrl        } from '@angular/platform-browser';
 
 import { AddressBook            } from '../constants/address';
 import { CommManagerService     } from '../comm-manager.service';
@@ -15,11 +17,14 @@ import { KeyValuePair           } from '../models/keyvaluepair.model';
 
 import 'rxjs/add/operator/switchMap';
 
-const CLASSNAME : string = 'Page';
-const FACEBOOK_COMMENT_SNIPPET : string = '<div class="fb-comments" data-href="fbcw" data-numposts="5"></div>';
+const Constants = {
+  ClassName : 'PageComponent',
+  FacebookCommentHtml : '<div class="fb-comments" data-href="fbcw" data-numposts="5"></div>',
+  iFrameLocator: 'iframe#site-content',
+};
 
 const TOKENS = {
-  ComponentPackageBaseToken: `Server.${CLASSNAME}`,
+  ComponentPackageBaseToken: `Server.${Constants.ClassName}`,
   ComponentPackage: [
   ]
 };
@@ -55,15 +60,20 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.resourceManager.setLoadingState(true, CLASSNAME);
+    this.resourceManager.setLoadingState(true, Constants.ClassName);
     this.sessionId = this.resourceManager.getSessionId();
-    this.route.params.switchMap((params : Params) => Promise.resolve(params["pageName"]))
+    this.route.params.switchMap(
+      (params : Params) => Promise.resolve(params["pageName"]))
       .subscribe((pageName : string) => {
-        this.route.params.switchMap((iParams : Params) => Promise.resolve(iParams["sectionName"]))
+        this.route.params.switchMap(
+          (iParams : Params) => Promise.resolve(iParams["sectionName"]))
           .subscribe((sectionName : string) => {
             console.log(`Section Name: ${sectionName}`);
             console.log(`PageName: ${pageName}`);
-            if (sectionName !== null && sectionName !== undefined && sectionName !== "") {
+            if (sectionName !== null && 
+              sectionName !== undefined && 
+              sectionName !== ""
+            ) {
               this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
                 `/pages/${sectionName}/${pageName}.html?sessionId=${this.sessionId}`);
             }
@@ -71,6 +81,20 @@ export class PageComponent implements OnInit {
               this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
                 `/pages/${pageName}.html?sessionId=${this.sessionId}`);
             }
+
+            $(Constants.iFrameLocator).ready((data : JQueryStatic<HTMLElement>) => {
+              this.childHeightHandler(
+                `${this.sessionId}-childFrameHeight`,
+                $('iframe#site-content').height().toString(),
+                this
+              );
+  
+              this.childWidthHandler(
+                `${this.sessionId}-childFrameWidth`,
+                $('iframe#site-content').width().toString(),
+                this
+              );
+            });
           });
       });
     
@@ -83,7 +107,9 @@ export class PageComponent implements OnInit {
       }
     });
 
+    // TODO: Remove later
     // Subscribe to iFrame messages
+    /*
     this.commManager.subscribeToChildMessage(
       `${this.sessionId}-childFrameHeight`,
       this.childHeightHandler,
@@ -95,6 +121,7 @@ export class PageComponent implements OnInit {
       this.childWidthHandler,
       this
     );
+    */
 
     this.commManager.subscribeToChildMessage(
       `${this.sessionId}-disableFacebookComments`,
@@ -103,7 +130,7 @@ export class PageComponent implements OnInit {
     );
 
     this.facebookComments = this.sanitizer.bypassSecurityTrustHtml(
-      FACEBOOK_COMMENT_SNIPPET.replace('fbcw', window.location.href));
+      Constants.FacebookCommentHtml.replace('fbcw', window.location.href));
   }
 
   public childDisableFacebook(
@@ -128,7 +155,7 @@ export class PageComponent implements OnInit {
     that : this
   ) : Promise<void> {
     that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
-    that.resourceManager.setLoadingState(true, CLASSNAME);
+    that.resourceManager.setLoadingState(true, Constants.ClassName);
     return Promise.resolve();
   }
 

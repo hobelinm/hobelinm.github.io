@@ -2,6 +2,7 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
     <iframe 
+      id="site-content"
       class="embed-responsive-item container-fluid" 
       [src]="pageSource" 
       [style.height]="pageHeight"
@@ -9,7 +10,7 @@
     </iframe>
     
     <div *ngIf="displayComments" 
-      id="content-page-facbook-comments"
+      id="content-page-facebook-comments"
       style="text-align:center; padding-left:144px;" 
       [style.width]="pageWidth">
 

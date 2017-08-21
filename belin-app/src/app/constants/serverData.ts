@@ -538,6 +538,8 @@ const serverData = {
   ]
 };
 
+const ContentMetadata = {};
+
 export const ShellPackage : Map<string, string> = new Map<string, string>(
   serverData.shellPackage.map(x => [x.key, x.value] as [string, string])
 );
@@ -545,3 +547,5 @@ export const ShellPackage : Map<string, string> = new Map<string, string>(
 export const ComponentData : Map<string, string> = new Map<string, string>(
   serverData.componentData.map(x => [x.key, x.value] as [string, string])
 );
+
+
