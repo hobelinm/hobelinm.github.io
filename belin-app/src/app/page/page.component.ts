@@ -83,6 +83,19 @@ export class PageComponent implements OnInit {
                 `/pages/${pageName}.html?sessionId=${this.sessionId}`);
             }
 
+            this.childHeightHandler(
+              `${this.sessionId}-childFrameHeight`,
+              $('body', $(Constants.iFrameLocator).contents()).height().toString(),
+              this
+            );
+
+            this.childWidthHandler(
+              `${this.sessionId}-childFrameWidth`,
+              $('body', $(Constants.iFrameLocator).contents()).width().toString(),
+              this
+            );
+
+            /*
             let iframeElement : HTMLIFrameElement = 
               <HTMLIFrameElement> document.getElementById(Constants.iFrameId);
 
@@ -99,6 +112,7 @@ export class PageComponent implements OnInit {
                 this
               );
             });
+            */
           });
       });
     
