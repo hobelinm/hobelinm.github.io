@@ -21,6 +21,7 @@ const Constants = {
   ClassName : 'PageComponent',
   FacebookCommentHtml : '<div class="fb-comments" data-href="fbcw" data-numposts="5"></div>',
   iFrameLocator: 'iframe#site-content',
+  iFrameId: 'site-content',
 };
 
 const TOKENS = {
@@ -82,16 +83,19 @@ export class PageComponent implements OnInit {
                 `/pages/${pageName}.html?sessionId=${this.sessionId}`);
             }
 
+            let iframeElement : HTMLIFrameElement = 
+              <HTMLIFrameElement> document.getElementById(Constants.iFrameId);
+              
             $(Constants.iFrameLocator).ready((data : JQueryStatic<HTMLElement>) => {
               this.childHeightHandler(
                 `${this.sessionId}-childFrameHeight`,
-                $('iframe#site-content').height().toString(),
+                iframeElement.contentWindow.document.body.scrollHeight.toString(),
                 this
               );
   
               this.childWidthHandler(
                 `${this.sessionId}-childFrameWidth`,
-                $('iframe#site-content').width().toString(),
+                iframeElement.contentWindow.document.body.scrollWidth.toString(),
                 this
               );
             });
