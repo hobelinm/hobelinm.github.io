@@ -1,25 +1,45 @@
 <div class="row text-center">
   <div class="col-md-1"></div>
   <div class="col-md-10">
+    <h1 class="display-3">{{pageTitle}}</h1>
+    <blockquote class="blockquote text-center">
+      <footer class="blockquote-footer">{{pageDescription}}</footer>
+    </blockquote>
+    <div class="addthis_inline_share_toolbox" style="text-align:right"></div>
     <iframe 
       id="site-content"
       class="embed-responsive-item container-fluid" 
+      [style.height]="pageHeight"
       [src]="pageSource">
     </iframe>
-    <!--
-      <iframe 
-        id="site-content"
-        class="embed-responsive-item container-fluid" 
-        [src]="pageSource" 
-        [style.height]="pageHeight"
-        [style.width]="pageWidth">
-      </iframe>
-    -->
+    <div class="row">
+      <div class="card border-light mb-3" style="max-width: 20rem;">
+        <div class="card-header"><small>Post Stats</small></div>
+        <div class="card-body text-info">
+          <p class="card-text"><small>
+            Category: Projects<br>
+            Word Count: 1234<br>
+            Tags: projects, posts, sample<br>
+            Created On: January 1, 2001<br>
+            Last Updated: January 1, 2001
+          </small></p>
+        </div>
+      </div>
+      <!-- Lib: Google Ad -->
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- AutomaticSize -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-8675025635164549"
+          data-ad-slot="8440032165"
+          data-ad-format="auto"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
     
     <div *ngIf="displayComments" 
-      id="content-page-facebook-comments"
-      style="text-align:center; padding-left:144px;" 
-      [style.width]="pageWidth">
+      id="content-page-facebook-comments">
 
       <div [innerHTML]="facebookComments"></div>
     </div>

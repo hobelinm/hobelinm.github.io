@@ -8,14 +8,18 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'Invariant.Constant.Shared.ShellVersion', 
-        value: '0.1.14.4' 
+        value: '0.1.15.0' 
     },
     { 
         key: 'Invariant.Constant.Shared.Release.CodeName', 
-        value: 'Clone 99' 
+        value: 'Triple Zero' 
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.15.0', 
+        value: '0.1.15.0 - Updated content engine' 
+    },
     { 
         key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.14.4', 
         value: '0.1.14.4 - Remove iframe size binding' 

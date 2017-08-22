@@ -1,9 +1,12 @@
 import { Injectable    } from '@angular/core';
 
 import { Constants     } from './constants/constants';
-import { ShellPackage, 
-         ComponentData } from './constants/serverData';
+import { 
+  ComponentData,
+  ContentMetadata,
+  ShellPackage         } from './constants/serverData';
 import { KeyValuePair  } from './models/keyvaluepair.model';
+import { PageMetadata  } from './models/pageMetadata.model';
 import { UtilService   } from './util.service';
 
 // {en-US|es-MX|Invariant}.{Constant|Server}.{Component|Service|Shared}.{Id}
@@ -258,10 +261,27 @@ export class ResourceManagerService {
 
   /**
    * Gets current session
-   * TODO: Generate random GUID
+   * TODO: Design Session Ids
    */
   public getSessionId() : string {
     return this.utilService.getGuid();
+  }
+
+  /**
+   * Gets page content metadata for rendering
+   * @param category of the page to search for
+   * @param id of the page
+   */
+  public getPageMetadata(category : string, id : string) : PageMetadata {
+    let pageKey : string = `${category}.${id}`;
+    let pageMetadata : PageMetadata = ContentMetadata.get(pageKey);
+    if (pageMetadata == null || pageMetadata == undefined) {
+      // TODO: Throw custom error here + Telemetry
+      throw new Error(
+        `ErrorId:NotFound Unable to find page metadata for category: '${category}' and id: '${id}'`);
+    }
+
+    return pageMetadata;
   }
 }
 

@@ -1,4 +1,5 @@
 import { KeyValuePair } from '../models/keyvaluepair.model';
+import { PageMetadata } from '../models/pageMetadata.model';
 
 /**
  * This information will be collected via server requests once the backend is functional
@@ -538,7 +539,27 @@ const serverData = {
   ]
 };
 
-const ContentMetadata = {};
+const contentMetadata = {
+  enUS : [
+    {
+      key : 'projects.TheSearchforElDorado',
+      value : {
+        key : 'TheSearchforElDorado',
+        title : 'The Search for El Dorado',
+        description : 'A tale from nothing to the wonders of a full fledged website',
+        category : 'projects',
+        tags : ['projects', 'software'],
+        locale : 'en-US',
+        createdOn : new Date(),
+        latestUpdate : new Date(),
+        wordCount : 922,
+        pageHeight : 2760,
+        thumbnail : new URL('https://google.com'),
+        source : new URL('https://docs.google.com/document/d/1JVSLCPI-HmkSOTZXQe5r3jDt9NNSHKCXXZEwvCnyAZ4/pub?embedded=true')
+      }
+    },
+  ],
+};
 
 export const ShellPackage : Map<string, string> = new Map<string, string>(
   serverData.shellPackage.map(x => [x.key, x.value] as [string, string])
@@ -548,4 +569,8 @@ export const ComponentData : Map<string, string> = new Map<string, string>(
   serverData.componentData.map(x => [x.key, x.value] as [string, string])
 );
 
-
+// TODO: Support multiple locales
+export const ContentMetadata : Map<string, PageMetadata> 
+  = new Map<string, PageMetadata>(
+    contentMetadata.enUS.map(x => [x.key, x.value] as [string, PageMetadata])
+  );

@@ -3,17 +3,19 @@
 import { Component, 
          OnInit                 } from '@angular/core';
 import { ActivatedRoute, 
-         Params                 } from '@angular/router';
+         Params,
+         Router                 } from '@angular/router';
 import { Location               } from '@angular/common';
 import { DomSanitizer, 
          SafeHtml,
          SafeStyle,
          SafeResourceUrl        } from '@angular/platform-browser';
 
-import { AddressBook            } from '../constants/address';
+import { AddressBook,           } from '../constants/address';
 import { CommManagerService     } from '../comm-manager.service';
-import { ResourceManagerService } from '../resource-manager.service';
 import { KeyValuePair           } from '../models/keyvaluepair.model';
+import { PageMetadata           } from '../models/pageMetadata.model';
+import { ResourceManagerService } from '../resource-manager.service';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -42,7 +44,8 @@ const TOKENS = {
 export class PageComponent implements OnInit {
   public pageSource : SafeResourceUrl;
   public pageHeight : SafeStyle;
-  public pageWidth : SafeStyle;
+  public pageTitle : string;
+  public pageDescription : string;
   public facebookComments : SafeHtml;
   public componentPackage : KeyValuePair;
   public sessionId : string;
@@ -50,6 +53,7 @@ export class PageComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
+    private router : Router,
     private location : Location,
     private sanitizer : DomSanitizer,
     private commManager : CommManagerService,
@@ -57,6 +61,8 @@ export class PageComponent implements OnInit {
   ) { 
     this.componentPackage = {};
     this.sessionId = "";
+    this.pageTitle = "";
+    this.pageDescription = "";
     this.displayComments = true;
   }
 
@@ -71,75 +77,40 @@ export class PageComponent implements OnInit {
           .subscribe((sectionName : string) => {
             console.log(`Section Name: ${sectionName}`);
             console.log(`PageName: ${pageName}`);
-            if (sectionName !== null && 
-              sectionName !== undefined && 
-              sectionName !== ""
-            ) {
-              this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
-                `/pages/${sectionName}/${pageName}.html?sessionId=${this.sessionId}`);
-            }
-            else {
-              this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
-                `/pages/${pageName}.html?sessionId=${this.sessionId}`);
+
+            if (sectionName == undefined || sectionName == null) {
+              sectionName = '';
             }
 
-            this.childHeightHandler(
-              `${this.sessionId}-childFrameHeight`,
-              $('body', $(Constants.iFrameLocator).contents()).height().toString(),
-              this
-            );
-
-            this.childWidthHandler(
-              `${this.sessionId}-childFrameWidth`,
-              $('body', $(Constants.iFrameLocator).contents()).width().toString(),
-              this
-            );
-
-            /*
-            let iframeElement : HTMLIFrameElement = 
-              <HTMLIFrameElement> document.getElementById(Constants.iFrameId);
-
-            $(iframeElement.contentWindow.document).ready((data : JQueryStatic<HTMLElement>) => {
+            try {
+              let pageMetadata : PageMetadata = 
+                this.resourceManager.getPageMetadata(sectionName, pageName);
+              
+              this.pageTitle = pageMetadata.title;
+              this.pageDescription = pageMetadata.description;
+              this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
+                pageMetadata.source.toString()
+              );
+              
               this.childHeightHandler(
                 `${this.sessionId}-childFrameHeight`,
-                iframeElement.contentWindow.document.body.scrollHeight.toString(),
+                pageMetadata.pageHeight.toString(),
                 this
               );
-  
-              this.childWidthHandler(
-                `${this.sessionId}-childFrameWidth`,
-                iframeElement.contentWindow.document.body.scrollWidth.toString(),
-                this
-              );
-            });
-            */
+
+              this.resourceManager.setLoadingState(false, Constants.ClassName);
+            }
+            catch (err) {
+              this.router.navigate(['/404']);
+            }
           });
       });
-    
-    this.pageHeight = this.sanitizer.bypassSecurityTrustStyle("500px");
-    this.pageWidth = this.sanitizer.bypassSecurityTrustStyle("500px");
     
     this.resourceManager.loadComponentResources().then(() => {
       for(let key of TOKENS.ComponentPackage) {
         this.setComponentPackageKey(key);
       }
     });
-
-    // TODO: Remove later
-    // Subscribe to iFrame messages
-    /*
-    this.commManager.subscribeToChildMessage(
-      `${this.sessionId}-childFrameHeight`,
-      this.childHeightHandler,
-      this
-    );
-
-    this.commManager.subscribeToChildMessage(
-      `${this.sessionId}-childFrameWidth`,
-      this.childWidthHandler,
-      this
-    );
-    */
 
     this.commManager.subscribeToChildMessage(
       `${this.sessionId}-disableFacebookComments`,
@@ -172,25 +143,7 @@ export class PageComponent implements OnInit {
     value : string, 
     that : this
   ) : Promise<void> {
-    console.log(`Setting iframe height to ${value}px`);
     that.pageHeight = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
-    that.resourceManager.setLoadingState(true, Constants.ClassName);
-    return Promise.resolve();
-  }
-
-  /**
-   * Listens to the right event from child frame to adjust width
-   * @param key being listened to
-   * @param value width to apply
-   * @param that an instance of this
-   */
-  public childWidthHandler(
-    key : string, 
-    value : string, 
-    that : this
-  ) : Promise<void> {
-    console.log(`Setting iframe width to ${value}px`);
-    that.pageWidth = that.sanitizer.bypassSecurityTrustStyle(`${value}px`);
     return Promise.resolve();
   }
 

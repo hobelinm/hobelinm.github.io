@@ -1,7 +1,23 @@
-iframe {
-  width: 100%;
+/* 
+  For elements in the center make sure to use width: 860px
+  It was found that this is the rought width of the page in google docs
+*/
+iframe#site-content {
+  width: 860px;
   border-width: 0px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  text-align: center;
 }
+
+#content-page-facebook-comments {
+  width: 860px;
+  text-align: center;
+}
+
+.card {
+  text-align: left;
+}
+/*
+*/
