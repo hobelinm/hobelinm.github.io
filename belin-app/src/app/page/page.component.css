@@ -13,11 +13,13 @@ iframe#site-content {
 
 #content-page-facebook-comments {
   width: 860px;
-  text-align: center;
+  align: center;
 }
 
 .card {
   text-align: left;
 }
-/*
-*/
+
+.addthis_inline_share_toolbox {
+  text-align: right;
+}

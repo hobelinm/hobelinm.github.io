@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs';
 
+import { AdsenseModule         } from 'ng2-adsense';
+
 import { AppRoutingModule      } from './app-routing/app-routing.module';
 import { AppComponent          } from './app.component';
 import { HeaderComponent       } from './header/header.component';
@@ -38,6 +40,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-8675025635164549',
+      adSlot: '8440032165',
+      adFormat: 'auto'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

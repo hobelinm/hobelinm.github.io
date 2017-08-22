@@ -24,6 +24,17 @@ const Constants = {
   FacebookCommentHtml : '<div class="fb-comments" data-href="fbcw" data-numposts="5"></div>',
   iFrameLocator: 'iframe#site-content',
   iFrameId: 'site-content',
+  GoogleAdHtml: `
+  <!-- AutomaticSize -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-8675025635164549"
+       data-ad-slot="8440032165"
+       data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  `,
 };
 
 const TOKENS = {
@@ -31,6 +42,10 @@ const TOKENS = {
   ComponentPackage: [
   ]
 };
+
+interface Window {
+  adsbygoogle: any[];
+}
 
 @Component({
   selector: 'app-page',
@@ -47,6 +62,7 @@ export class PageComponent implements OnInit {
   public pageTitle : string;
   public pageDescription : string;
   public facebookComments : SafeHtml;
+  public googleAds : SafeHtml;
   public componentPackage : KeyValuePair;
   public sessionId : string;
   public displayComments : boolean;
@@ -120,6 +136,9 @@ export class PageComponent implements OnInit {
 
     this.facebookComments = this.sanitizer.bypassSecurityTrustHtml(
       Constants.FacebookCommentHtml.replace('fbcw', window.location.href));
+    
+    this.googleAds = this.sanitizer.bypassSecurityTrustHtml(
+      Constants.GoogleAdHtml);
   }
 
   public childDisableFacebook(
