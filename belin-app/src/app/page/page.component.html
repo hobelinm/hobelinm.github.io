@@ -1,7 +1,7 @@
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<div class="row text-center">
+<div class="row">
   <div class="col-md-1"></div>
-  <div class="col-md-10">
+  <div class="col-md-10 text-center">
     <h1 class="display-3">{{pageTitle}}</h1>
     <blockquote class="blockquote text-center">
       <footer class="blockquote-footer">{{pageDescription}}</footer>
@@ -13,21 +13,21 @@
       [style.height]="pageHeight"
       [src]="pageSource">
     </iframe>
-    <div class="row">
-      <div class="card border-light mb-3" style="max-width: 20rem;">
+    <div class="row container-fluid">
+      <div class="card border-light mb-3 page-wrap-up" style="max-width: 20rem;">
         <div class="card-header"><small>Post Stats</small></div>
         <div class="card-body text-info">
           <p class="card-text"><small>
-            Category: Projects<br>
-            Word Count: 1234<br>
-            Tags: projects, posts, sample<br>
+            Category: {{pageCategory}}<br>
+            Word Count: {{pageWordCount}}<br>
+            Tags: {{pageTags}}<br>
             Created On: January 1, 2001<br>
             Last Updated: January 1, 2001
           </small></p>
         </div>
       </div>
 
-      <ng2-adsense></ng2-adsense>
+      <ng2-adsense class="page-wrap-up" [width]="450"></ng2-adsense>
     </div>
     
     <div *ngIf="displayComments" 

@@ -11,9 +11,14 @@ iframe#site-content {
   text-align: center;
 }
 
+.page-wrap-up {
+  margin: auto;
+}
+
 #content-page-facebook-comments {
   width: 860px;
-  align: center;
+  text-align: center;
+  margin: auto;
 }
 
 .card {
