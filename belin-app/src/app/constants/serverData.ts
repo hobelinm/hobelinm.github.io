@@ -550,11 +550,11 @@ const contentMetadata = {
         category : 'projects',
         tags : ['projects', 'software'],
         locale : 'en-US',
-        createdOn : new Date(),
-        latestUpdate : new Date(),
+        createdOn : new Date(2017, 8, 8, 12, 35),
+        latestUpdate : new Date(2017, 8, 21, 21, 17),
         wordCount : 922,
-        pageHeight : 2760,
-        thumbnail : new URL('https://google.com'),
+        pageHeight : 2800,
+        thumbnail : new URL('/pages/thumbnails/TheSearchForElDorado.jpg'),
         source : new URL('https://docs.google.com/document/d/1JVSLCPI-HmkSOTZXQe5r3jDt9NNSHKCXXZEwvCnyAZ4/pub?embedded=true')
       }
     },

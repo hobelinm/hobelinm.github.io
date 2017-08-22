@@ -8,7 +8,7 @@ import { KeyValuePair } from '../models/keyvaluepair.model';
 const constantData = [
     { 
         key: 'Invariant.Constant.Shared.ShellVersion', 
-        value: '0.1.15.2' 
+        value: '0.1.15.3' 
     },
     { 
         key: 'Invariant.Constant.Shared.Release.CodeName', 
@@ -16,6 +16,10 @@ const constantData = [
     },
 
     // Change Logs:
+    { 
+        key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.15.3', 
+        value: '0.1.15.3 - Created thumnail for page' 
+    },
     { 
         key: 'en-US.Constant.ChangeLog.ChangeLog.0.1.15.2', 
         value: '0.1.15.2 - Fixes to styles and adsense' 

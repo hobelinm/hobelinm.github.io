@@ -51,6 +51,8 @@ export class PageComponent implements OnInit {
   public pageCategory : string;
   public pageWordCount : number;
   public pageTags : string;
+  public pageCreatedOn : string;
+  public pageUpdatedOn : string;
   public facebookComments : SafeHtml;
   public googleAds : SafeHtml;
   public componentPackage : KeyValuePair;
@@ -72,6 +74,8 @@ export class PageComponent implements OnInit {
     this.pageDescription = "";
     this.pageTags = "";
     this.pageWordCount = 0;
+    this.pageCreatedOn = (new Date()).toString();
+    this.pageUpdatedOn = (new Date()).toString();
     this.displayComments = true;
   }
 
@@ -100,6 +104,13 @@ export class PageComponent implements OnInit {
               this.pageCategory = pageMetadata.category;
               this.pageWordCount = pageMetadata.wordCount;
               this.pageTags = pageMetadata.tags.join(', ');
+
+              let dateBuffer : string = pageMetadata.createdOn.toDateString();
+              dateBuffer = `${dateBuffer} ${pageMetadata.createdOn.toLocaleTimeString()}`;
+              this.pageCreatedOn = dateBuffer;
+              dateBuffer = pageMetadata.latestUpdate.toDateString();
+              dateBuffer = `${dateBuffer} ${pageMetadata.latestUpdate.toLocaleTimeString()}`;
+              this.pageUpdatedOn = dateBuffer;
               this.pageSource = this.sanitizer.bypassSecurityTrustResourceUrl(
                 pageMetadata.source.toString()
               );
