@@ -554,7 +554,7 @@ const contentMetadata = {
         latestUpdate : new Date(2017, 8, 21, 21, 17),
         wordCount : 922,
         pageHeight : 2800,
-        thumbnail : new URL('/pages/thumbnails/TheSearchForElDorado.jpg'),
+        thumbnail : new URL('pages/thumbnails/TheSearchForElDorado.jpg', document.baseURI),
         source : new URL('https://docs.google.com/document/d/1JVSLCPI-HmkSOTZXQe5r3jDt9NNSHKCXXZEwvCnyAZ4/pub?embedded=true')
       }
     },
