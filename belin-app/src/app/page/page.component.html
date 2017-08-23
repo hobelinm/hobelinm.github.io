@@ -7,23 +7,42 @@
       <footer class="blockquote-footer">{{pageDescription}}</footer>
     </blockquote>
     <div class="addthis_inline_share_toolbox"></div>
+    
     <iframe 
       id="site-content"
       class="embed-responsive-item container-fluid" 
       [style.height]="pageHeight"
       [src]="pageSource">
     </iframe>
+
     <div class="row container-fluid">
-      <div class="card border-light mb-3 page-wrap-up" style="max-width: 20rem;">
-        <div class="card-header"><small>Post Stats</small></div>
+      <div class="card border-light mb-3 page-wrap-up" style="max-width: 25rem;">
+        <div class="card-header"><small>{{componentPackage['PostStats']}}</small></div>
         <div class="card-body text-info">
-          <p class="card-text"><small>
-            Category: {{pageCategory}}<br>
-            Word Count: {{pageWordCount}}<br>
-            Tags: {{pageTags}}<br>
-            Created On: {{pageCreatedOn}}<br>
-            Last Updated: {{pageUpdatedOn}}
-          </small></p>
+          <table class="table table-sm card-text">
+            <tbody>
+              <tr>
+                <td><small>{{componentPackage['PostCategory']}}:</small></td>
+                <td><small>{{pageCategory}}</small></td>
+              </tr>
+              <tr>
+                <td><small>{{componentPackage['WordCount']}}:</small></td>
+                <td><small>{{pageWordCount}}</small></td>
+              </tr>
+              <tr>
+                <td><small>{{componentPackage['Tags']}}:</small></td>
+                <td><small>{{pageTags}}</small></td>
+              </tr>
+              <tr>
+                <td><small>{{componentPackage['CreatedOn']}}:</small></td>
+                <td><small>{{pageCreatedOn}}</small></td>
+              </tr>
+              <tr>
+                <td><small>{{componentPackage['LastUpdated']}}:</small></td>
+                <td><small>{{pageUpdatedOn}}</small></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -38,6 +57,8 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+<!--
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+-->

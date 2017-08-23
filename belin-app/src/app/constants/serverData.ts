@@ -536,6 +536,30 @@ const serverData = {
       key: 'en-US.Server.Section.Title', 
       value: 'Section' 
     },
+    {
+      key: 'en-US.Server.PageComponent.PostStats',
+      value: 'Post Stats'
+    },
+    {
+      key: 'en-US.Server.PageComponent.PostCategory',
+      value: 'Category'
+    },
+    {
+      key: 'en-US.Server.PageComponent.WordCount',
+      value: 'Word Count'
+    },
+    {
+      key: 'en-US.Server.PageComponent.Tags',
+      value: 'Tags'
+    },
+    {
+      key: 'en-US.Server.PageComponent.CreatedOn',
+      value: 'Created On'
+    },
+    {
+      key: 'en-US.Server.PageComponent.LastUpdated',
+      value: 'Last Updated'
+    },
   ]
 };
 

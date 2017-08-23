@@ -27,6 +27,12 @@ const Constants = {
 const TOKENS = {
   ComponentPackageBaseToken: `Server.${Constants.ClassName}`,
   ComponentPackage: [
+    'PostStats',
+    'PostCategory',
+    'WordCount',
+    'Tags',
+    'CreatedOn',
+    'LastUpdated',
   ]
 };
 
