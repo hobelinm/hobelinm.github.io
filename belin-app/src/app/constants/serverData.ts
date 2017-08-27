@@ -461,6 +461,14 @@ const serverData = {
       value: 'Major releases or improvements'
     },
     {
+      key: 'en-US.Server.ChangeLog.LatestClientChange',
+      value: 'Latest Client Change'
+    },
+    {
+      key: 'en-US.Server.ChangeLog.LatestServerChange',
+      value: 'Latest Server Change'
+    },
+    {
       key: 'en-US.Server.ChangeLog.HeaderClientChangeLog',
       value: 'Client Change Log'
     },

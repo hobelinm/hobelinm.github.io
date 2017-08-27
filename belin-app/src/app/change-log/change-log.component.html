@@ -8,9 +8,16 @@
 | | |______ {{componentPackage["BuildPolicy"]}}
 | |________ {{componentPackage["MinorPolicy"]}}
 |__________ {{componentPackage["MajorPolicy"]}}
-</pre>
+    </pre>
   <pre>{{componentPackage["CurrentRelease"]}} {{componentPackage["CurrentVersionValue"]}} ({{componentPackage["Codename"]}} {{componentPackage["CodeNameValue"]}})</pre>
+  <p>{{componentPackage["LatestClientChange"]}}:</p>
+  <pre>{{clientChanges[0]}}</pre>
+  <pre></pre>
+  <div *ngIf="thereAreServerChanges">
+    <p>{{componentPackage["LatestServerChange"]}}:</p>
+    <pre>{{serverChanges[0]}}</pre>
   </div>
+</div>
 </div>
 <div class="fluid-container">
   <div class="row">

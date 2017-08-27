@@ -20,6 +20,8 @@ const TOKENS = {
     'BuildPolicy',
     'MinorPolicy',
     'MajorPolicy',
+    'LatestClientChange',
+    'LatestServerChange',
     'HeaderClientChangeLog',
     'HeaderServerChangeLog',
     'CurrentRelease',
@@ -39,11 +41,13 @@ export class ChangeLogComponent implements OnInit {
   public componentPackage : KeyValuePair;
   public clientChanges : Array<string>;
   public serverChanges : Array<string>;
+  public thereAreServerChanges : boolean;
 
   constructor(private resourceManager : ResourceManagerService) {
     this.componentPackage = {};
     this.clientChanges = new Array<string>();
     this.serverChanges = new Array<string>();
+    this.thereAreServerChanges = false;
   }
 
   ngOnInit() {
@@ -58,7 +62,12 @@ export class ChangeLogComponent implements OnInit {
 
       this.resourceManager
         .getResources(TOKENS.ServerChangeLogs)
-        .then(serverLogs => this.serverChanges = serverLogs);
+        .then(serverLogs => {
+          this.serverChanges = serverLogs;
+          if (this.serverChanges.length > 0) {
+            this.thereAreServerChanges = true;
+          }
+        });
 
         this.resourceManager
           .getResource(TOKENS.CurrentVersion)
