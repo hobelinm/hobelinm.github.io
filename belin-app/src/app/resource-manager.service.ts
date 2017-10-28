@@ -1,3 +1,5 @@
+/// <reference path="../../node_modules/@types/protobufjs/index.d.ts" />
+
 import { Injectable    } from '@angular/core';
 
 //import * as ProtoBuf     from '../../node_modules/@types/protobufjs/index';
