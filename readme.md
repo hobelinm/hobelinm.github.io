@@ -1,7 +1,3 @@
 Home Page
 
-```
-0.1.2 - 404 page, removed change list, iframe adjustments
-0.1.1 - Embed blog
-0.1.0 - Initial Version
-```
+Change Log: https://hugobelin.blogspot.com/2018/01/client-change-log.html
