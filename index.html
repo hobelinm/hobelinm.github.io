@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85767008-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85767008-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'UA-85767008-2');
-  </script>
+      gtag('config', 'UA-85767008-2');
+    </script>
     <meta charset="utf-8">
     <title>Hugo Belin</title>
     <base href="/">
@@ -55,10 +55,10 @@
             <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="topNavbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Site
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="topNavbarDropdown">
               <a class="dropdown-item" href="#">Projects</a>
               <a class="dropdown-item" href="#">Movies</a>
               <a class="dropdown-item" href="#">Cars</a>
@@ -73,14 +73,16 @@
           </li>
         </ul>
         <a class="nav-link disabled" href="#">Login</a>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</a>
+          <div class="dropdown-menu" aria-labelledby="languageDropdown">
+            <a class="dropdown-item" href="#">English</a>
+            <a class="dropdown-item" href="#">Spanish</a>
+          </div>
+        </div>
       </div>
     </nav>
     <h1>Home Page</h1>
-    <p>In construction... v0.1.5</p>
     <iframe src="https://hugobelin.blogspot.com/" height="800px" width="100%" style="border:none; padding-bottom:50px"></iframe>
     <nav class="navbar fixed-bottom navbar-dark bg-dark navbar-expand-sm">
       <a class="navbar-brand" href="#"><i class="material-icons">fingerprint</i></a>
@@ -90,31 +92,16 @@
       </button>
       <div class="collapse navbar-collapse" id="bottomNavbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Copyright 2018<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">v0.1.6</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Site
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Projects</a>
-              <a class="dropdown-item" href="#">Movies</a>
-              <a class="dropdown-item" href="#">Cars</a>
-              <a class="dropdown-item" href="#">Videogames</a>
-              <a class="dropdown-item" href="#">Fitness</a>
-              <a class="dropdown-item" href="#">Travel</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Credits</a>
-              <a class="dropdown-item" href="#">Change Log</a>
-              <a class="dropdown-item" href="#">Statistics</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Page Views: 0</a>
           </li>
         </ul>
-        <a class="nav-link disabled" href="#">Login</a>
       </div>
     </nav>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
